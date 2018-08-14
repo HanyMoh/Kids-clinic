@@ -1,39 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>
+    <small>عرض</small>
+    حالة</h1>
+</div>
 
 <p>
-  <strong>Code:</strong>
+  <strong>الكود:</strong>
   <%= @patient.code %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>اسم الحالة</strong>
   <%= @patient.name %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong>الهاتف:</strong>
   <%= @patient.phone %>
 </p>
 
 <p>
-  <strong>Birthdate:</strong>
+  <strong>تاريخ الميلاد:</strong>
   <%= @patient.birthdate %>
 </p>
 
 <p>
-  <strong>Region:</strong>
-  <%= @patient.region %>
+  <strong>المنطقة:</strong>
+  <%= @patient.region&.name %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>العنوان:</strong>
   <%= @patient.address %>
 </p>
 
 <p>
-  <strong>Note:</strong>
+  <strong>ملاجظات:</strong>
   <%= @patient.note %>
 </p>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'تعدييل', edit_patient_path(@patient), class: 'btn btn-success pull-left' %>
+<%= link_to 'عودة', patients_path, class: 'btn btn-success pull-left' %>

@@ -1,52 +1,63 @@
 <%= form_with(model: patient, local: true) do |form| %>
-  <% if patient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+<% if patient.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(patient.errors.count, "error") %>
+      prohibited this patient from being saved:</h2>
 
-      <ul>
+    <ul>
       <% patient.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+    </ul>
+  </div>
+<% end %>
+<div class="col-md-4">
+  <div class="form-group">
     <%= form.label :code %>
-    <%= form.number_field :code, id: :patient_code %>
+    <%= form.number_field :code, id: :patient_code, class: "form-control" %>
   </div>
+</div>
 
-  <div class="field">
+<div class="col-md-8">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :patient_name %>
+    <%= form.text_field :name, id: :patient_name, class: "form-control" %>
   </div>
-
-  <div class="field">
+</div>
+<div class="col-md-4">
+  <div class="form-group">
     <%= form.label :phone %>
-    <%= form.text_field :phone, id: :patient_phone %>
+    <%= form.text_field :phone, id: :patient_phone, class: "form-control" %>
   </div>
-
-  <div class="field">
+</div>
+<div class="col-md-4">
+  <div class="form-group">
     <%= form.label :birthdate %>
-    <%= form.date_select :birthdate, id: :patient_birthdate %>
+    <%= form.date_select :birthdate, id: :patient_birthdate, class: "form-control" %>
   </div>
-
-  <div class="field">
+</div>
+<div class="col-md-4">
+  <div class="form-group">
     <%= form.label :region_id %>
-    <%= form.text_field :region_id, id: :patient_region_id %>
+    <%= form.collection_select :region_id, Region.all, :id, :name, { :include_blank => true }, { :class=> "form-control" } %>
   </div>
+</div>
 
-  <div class="field">
+<div class="col-md-6">
+  <div class="form-group">
     <%= form.label :address %>
-    <%= form.text_field :address, id: :patient_address %>
+    <%= form.text_area :address, id: :patient_address, class: "form-control" %>
   </div>
+</div>
+<div class="col-md-6">
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :note %>
-    <%= form.text_area :note, id: :patient_note %>
+    <%= form.text_area :note, id: :patient_note, class: "form-control" %>
   </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="actions">
+  <%= form.submit "حفظ", class: "btn btn-primary" %>
+</div>
 <% end %>

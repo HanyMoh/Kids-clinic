@@ -1,6 +1,10 @@
-<h1>Editing Patient</h1>
+<div class="page-header">
+  <h1><small>تعديل</small> حالة</h1>
+</div>
 
 <%= render 'form', patient: @patient %>
 
-<%= link_to 'Show', @patient %> |
-<%= link_to 'Back', patients_path %>
+
+<br />
+<%= link_to 'عرض', @patient, class: 'btn btn-default pull-left' %>
+<%= link_to 'عودة', patients_path, class: 'btn btn-success pull-left' %>
