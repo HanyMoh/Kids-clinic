@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :region_name %>
+  <div class="form-group">
+    <%= form.label :name, "اسم المنطقة" %>
+    <%= form.text_field :name, id: :region_name, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "حفظ", class: "btn btn-primary" %>
   </div>
 <% end %>
