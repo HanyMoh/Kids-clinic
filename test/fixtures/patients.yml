@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: 1
+  name: MyString
+  phone: MyString
+  birthdate: 2018-08-14
+  region: one
+  address: MyString
+  note: MyText
+
+two:
+  code: 1
+  name: MyString
+  phone: MyString
+  birthdate: 2018-08-14
+  region: two
+  address: MyString
+  note: MyText

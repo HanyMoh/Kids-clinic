@@ -16,12 +16,12 @@
      <ul class="nav navbar-nav">
        <% if user_signed_in? %>
        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-       <li><a href="#">Link</a></li>
+       <li><%= link_to "إضافة حالة جديدة", new_patient_path %></li>
        <li class="dropdown">
          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
          <ul class="dropdown-menu">
-           <li><a href="#">Action</a></li>
-           <li><a href="#">Another action</a></li>
+           <li><%= link_to 'المنطقة', regions_path %></li>
+           <li><%= link_to 'انواع الكشف', visit_types_path %></li>
            <li><a href="#">Something else here</a></li>
            <li role="separator" class="divider"></li>
            <li><a href="#">Separated link</a></li>

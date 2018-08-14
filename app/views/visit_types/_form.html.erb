@@ -1,0 +1,22 @@
+<%= form_with(model: visit_type, local: true) do |form| %>
+  <% if visit_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(visit_type.errors.count, "error") %> prohibited this visit_type from being saved:</h2>
+
+      <ul>
+      <% visit_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :visit_type_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
