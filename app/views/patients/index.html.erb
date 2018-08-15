@@ -20,7 +20,7 @@
       <tr>
         <td><%= patient.code %></td>
         <td><%= link_to patient.name, patient %></td>
-        <td><%= patient.birthdate %></td>
+        <td><%= time_ago_in_words patient.birthdate %></td>
         <td><%= patient.region&.name %></td>
         <td><%= link_to 'تعديل', edit_patient_path(patient) %> | <%= link_to 'حذف', patient, method: :delete, data: { confirm: 'هل انت متاكد؟' } %></td>
       </tr>

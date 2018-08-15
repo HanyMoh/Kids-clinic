@@ -21,7 +21,8 @@
 
 <p>
   <strong>تاريخ الميلاد:</strong>
-  <%= @patient.birthdate %>
+  <%= @patient.birthdate %> <br>
+  <%= time_ago_in_words @patient.birthdate %>
 </p>
 
 <p>
