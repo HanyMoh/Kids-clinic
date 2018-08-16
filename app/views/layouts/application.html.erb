@@ -21,11 +21,9 @@
     <%= render 'layouts/header' %>
     <div class="container">
       <div class="row">
-        <% flash.each do |key, value| %>
-          <div class="text-center">
-            <%= value %>
-          </div>
-        <% end %>
+        <%= render "layouts/flash" %>
+        <%= yield :flash_message %>
+
         <%= yield %>
       </div>
     </div>

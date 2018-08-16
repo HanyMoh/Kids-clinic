@@ -13,6 +13,9 @@ class VisitsController < ApplicationController
   # GET /visits/new
   def new
     @visit = Visit.new
+    @visit.code = Visit.max_code
+    @visit.turn_num = Visit.current_turn Date.current
+    @visit.visit_date = Date.current
   end
 
   # GET /visits/1/edit

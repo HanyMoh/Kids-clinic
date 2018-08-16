@@ -6,9 +6,12 @@
 
 $(document).ready(function() {
   $('.datepicker').datepicker({
-    todayBtn: true,
-    clearBtn: true,
-    daysOfWeekHighlighted: "5",
-    todayHighlight: true
-  });
+      todayBtn: 'linked',
+      format: 'yyyy-mm-dd',
+      keyboardNavigation: false,
+      forceParse: false,
+      calendarWeeks: true,
+      autoclose: true,
+      todayHighlight: true,
+    });
 });

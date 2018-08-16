@@ -1,0 +1,13 @@
+<div class="flash-container">
+  <% if notice %>
+    <div class="alert alert-success alert-dismissable">
+      <button aria-hidden='true' class='close' data-dismiss='alert' type='button'>×</button>
+      <%= notice %>
+    </div>
+  <% elsif alert %>
+    <div class='alert alert-danger alert-dismissable'>
+      <button aria-hidden='true' class='close' data-dismiss='alert' type='button'>×</button>
+      <%= alert %>
+    </div>
+  <% end %>
+</div>

@@ -4,4 +4,8 @@ class Visit < ApplicationRecord
   belongs_to :user
 
   default_scope { order('created_at desc') }
+  scope :max_code, lambda { maximum('code').to_i + 1 }
+  scope :current_turn, lambda { |visit_date|
+    Visit.where(visit_date: visit_date).maximum('turn_num').to_i + 1
+  }
 end
