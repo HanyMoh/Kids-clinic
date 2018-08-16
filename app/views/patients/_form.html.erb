@@ -13,46 +13,46 @@
 <% end %>
 <div class="col-md-4">
   <div class="form-group">
-    <%= form.label :code %>
+    <%= form.label :code, "الكود"%>
     <%= form.number_field :code, id: :patient_code, class: "form-control" %>
   </div>
 </div>
 
 <div class="col-md-8">
   <div class="form-group">
-    <%= form.label :name %>
+    <%= form.label :name,"الاسم" %>
     <%= form.text_field :name, id: :patient_name, class: "form-control" %>
   </div>
 </div>
 <div class="col-md-4">
   <div class="form-group">
-    <%= form.label :phone %>
+    <%= form.label :phone,"الهاتف" %>
     <%= form.text_field :phone, id: :patient_phone, class: "form-control" %>
   </div>
 </div>
 <div class="col-md-4">
   <div class="form-group">
-    <%= form.label :birthdate %>
+    <%= form.label :birthdate,"تاريخ الميلاد" %>
     <%= form.text_field :birthdate, id: :patient_birthdate, class: "form-control datepicker" %>
   </div>
 </div>
 <div class="col-md-4">
   <div class="form-group">
-    <%= form.label :region_id %>
+    <%= form.label :region_id,"المنطقة" %>
     <%= form.collection_select :region_id, Region.all, :id, :name, { :include_blank => true }, { :class=> "form-control" } %>
   </div>
 </div>
 
 <div class="col-md-6">
   <div class="form-group">
-    <%= form.label :address %>
+    <%= form.label :address,"العنوان" %>
     <%= form.text_area :address, id: :patient_address, class: "form-control" %>
   </div>
 </div>
 <div class="col-md-6">
 
   <div class="form-group">
-    <%= form.label :note %>
+    <%= form.label :note,"ملاحظات" %>
     <%= form.text_area :note, id: :patient_note, class: "form-control" %>
   </div>
 </div>

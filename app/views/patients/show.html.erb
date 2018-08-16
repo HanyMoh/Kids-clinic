@@ -5,11 +5,6 @@
 </div>
 
 <p>
-  <strong>الكود:</strong>
-  <%= @patient.code %>
-</p>
-
-<p>
   <strong>اسم الحالة</strong>
   <%= @patient.name %>
 </p>
@@ -40,5 +35,6 @@
   <%= @patient.note %>
 </p>
 
-<%= link_to 'تعدييل', edit_patient_path(@patient), class: 'btn btn-success pull-left' %>
+
+<%= link_to 'تعديل', edit_patient_path(@patient), class: 'btn btn-success pull-left' %>
 <%= link_to 'عودة', patients_path, class: 'btn btn-success pull-left' %>

@@ -1,29 +1,54 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>
+    <small>عرض</small>
+    زيارة</h1>
+</div>
 
 <p>
-  <strong>Visit date:</strong>
+  <strong>التاريخ</strong>
   <%= @visit.visit_date %>
 </p>
-
 <p>
-  <strong>Patient:</strong>
-  <%= @visit.patient %>
+  <strong>رقم الكشف:</strong>
+  <%= @visit.code %>
+</p>
+
+<p><strong>الدور</strong>
+  <%= @visit.turn_num %>
 </p>
 
 <p>
-  <strong>Visit type:</strong>
-  <%= @visit.visit_type %>
+  <strong>اسم الحالة:</strong>
+  <%= @visit.patient&.name %>
+</p>
+<p>
+  <strong>تاريخ الميلاد:</strong>
+  <%= @visit&.patient&.birthdate %> <br>
+  <%= time_ago_in_words @visit&.patient&.birthdate %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>المنطقة:</strong>
+  <%= @visit&.patient&.region&.name %>
+</p>
+<p>
+  <strong>نوع الكشف:</strong>
+  <%= @visit.visit_type&.name %>
+</p>
+
+<p>
+  <strong>التشخيص:</strong>
   <%= @visit.description %>
 </p>
 
 <p>
-  <strong>Note:</strong>
+  <strong>ملاحظات:</strong>
   <%= @visit.note %>
 </p>
+<p>
+  <strong>المستخدم:</strong>
+  <%= @visit&.user&.email %>
+</p>
 
-<%= link_to 'Edit', edit_visit_path(@visit) %> |
-<%= link_to 'Back', visits_path %>
+<%= link_to 'تعديل', edit_visit_path(@visit), class: 'btn btn-success pull-left' %>
+<%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>

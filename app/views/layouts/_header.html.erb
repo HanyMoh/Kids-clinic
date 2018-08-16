@@ -15,7 +15,7 @@
    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
      <ul class="nav navbar-nav">
        <% if user_signed_in? %>
-       <li class="active"><%= link_to 'إضافة زيارة جديدة', visits_path %></li>
+       <li class="active"><%= link_to 'إضافة زيارة جديدة', new_visit_path %></li>
        <li><%= link_to "إضافة حالة جديدة", new_patient_path %></li>
        <li class="dropdown">
          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">الإعدادات <span class="caret"></span></a>
@@ -24,8 +24,10 @@
            <li><%= link_to 'انواع الكشف', visit_types_path %></li>
            <li><%= link_to "الحالات", patients_path %></li>
            <li role="separator" class="divider"></li>
-           <li><a href="#">Separated link</a></li>
+           <li><%= link_to 'الزيارات', visits_path %></li>
            <li role="separator" class="divider"></li>
+           <li><a href="#">One more separated link</a></li>
+           <li><a href="#">One more separated link</a></li>
            <li><a href="#">One more separated link</a></li>
          </ul>
        </li>

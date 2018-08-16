@@ -2,13 +2,11 @@ class VisitsController < ApplicationController
   before_action :set_visit, only: [:show, :edit, :update, :destroy]
 
   # GET /visits
-  # GET /visits.json
   def index
     @visits = Visit.all
   end
 
   # GET /visits/1
-  # GET /visits/1.json
   def show
   end
 
@@ -22,31 +20,27 @@ class VisitsController < ApplicationController
   end
 
   # POST /visits
-  # POST /visits.json
   def create
     @visit = Visit.new(visit_params)
+    @visit.user = current_user
 
     respond_to do |format|
       if @visit.save
-        format.html { redirect_to @visit, notice: 'Visit was successfully created.' }
-        format.json { render :show, status: :created, location: @visit }
+        format.html { redirect_to visits_url, notice: 'Visit was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @visit.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /visits/1
-  # PATCH/PUT /visits/1.json
   def update
     respond_to do |format|
       if @visit.update(visit_params)
-        format.html { redirect_to @visit, notice: 'Visit was successfully updated.' }
+        format.html { redirect_to visits_url, notice: 'Visit was successfully updated.' }
         format.json { render :show, status: :ok, location: @visit }
       else
         format.html { render :edit }
-        format.json { render json: @visit.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +51,6 @@ class VisitsController < ApplicationController
     @visit.destroy
     respond_to do |format|
       format.html { redirect_to visits_url, notice: 'Visit was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -69,6 +62,6 @@ class VisitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def visit_params
-      params.require(:visit).permit(:visit_date, :patient_id, :visit_type_id, :description, :note)
+      params.require(:visit).permit(:visit_date, :patient_id, :visit_type_id, :description, :note, :user_id, :code, :turn_num)
     end
 end

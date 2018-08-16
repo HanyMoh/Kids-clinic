@@ -1,6 +1,9 @@
-<h1>Editing Visit</h1>
+<div class="page-header">
+  <h1><small>تعديل</small> زيارة</h1>
+</div>
 
 <%= render 'form', visit: @visit %>
 
-<%= link_to 'Show', @visit %> |
-<%= link_to 'Back', visits_path %>
+<br />
+<%= link_to 'عرض', @visit, class: 'btn btn-default pull-left' %>
+<%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
