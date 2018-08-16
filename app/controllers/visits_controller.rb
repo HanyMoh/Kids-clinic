@@ -1,4 +1,5 @@
 class VisitsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_visit, only: [:show, :edit, :update, :destroy]
 
   # GET /visits
@@ -8,10 +9,12 @@ class VisitsController < ApplicationController
 
   # GET /visits/1
   def show
+    authorize! :read, @visit
   end
 
   # GET /visits/new
   def new
+    authorize! :create, @visit
     @visit = Visit.new
     @visit.code = Visit.max_code
     @visit.turn_num = Visit.current_turn Date.current
@@ -20,6 +23,7 @@ class VisitsController < ApplicationController
 
   # GET /visits/1/edit
   def edit
+    authorize! :update, @visit
   end
 
   # POST /visits
@@ -51,6 +55,7 @@ class VisitsController < ApplicationController
   # DELETE /visits/1
   # DELETE /visits/1.json
   def destroy
+    authorize! :destroy, @visit
     @visit.destroy
     respond_to do |format|
       format.html { redirect_to visits_url, notice: 'Visit was successfully destroyed.' }

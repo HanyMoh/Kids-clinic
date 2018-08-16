@@ -1,4 +1,5 @@
 class VisitTypesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_visit_type, only: [:edit, :update, :destroy]
 
   # GET /visit_types
@@ -8,11 +9,13 @@ class VisitTypesController < ApplicationController
 
   # GET /visit_types/new
   def new
+    authorize! :create, @visit_type
     @visit_type = VisitType.new
   end
 
   # GET /visit_types/1/edit
   def edit
+    authorize! :update, @visit_type
   end
 
   # POST /visit_types
@@ -41,6 +44,7 @@ class VisitTypesController < ApplicationController
 
   # DELETE /visit_types/1
   def destroy
+    authorize! :destroy, @visit_type
     @visit_type.destroy
     respond_to do |format|
       format.html { redirect_to visit_types_url, notice: 'Visit type was successfully destroyed.' }

@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   # GET /patients
@@ -10,16 +11,19 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.json
   def show
+    authorize! :read, @patient
   end
 
   # GET /patients/new
   def new
+    authorize! :create, @patient
     @patient = Patient.new
     @patient.code = Patient.max_code
   end
 
   # GET /patients/1/edit
   def edit
+    authorize! :update, @patient
   end
 
   # POST /patients
@@ -49,6 +53,7 @@ class PatientsController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.json
   def destroy
+    authorize! :destroy, @patient
     @patient.destroy
     respond_to do |format|
       format.html { redirect_to patients_url, notice: 'Patient was successfully destroyed.' }

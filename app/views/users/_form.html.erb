@@ -1,0 +1,42 @@
+<%= form_for(user) do |f| %>
+<% if user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(user.errors.count, "error") %>
+    prohibited this user from being saved:</h2>
+
+  <ul>
+    <% user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field form-group col-xs-12 col-sm-12 col-md-6">
+  <%= f.label :is_active, "هل هو مدير", class: 'control-label' %>
+  <%= f.select :is_active, [["نعم", true], ["ﻻ", false]], {:include_blank => true},{class: 'require form-control'} %>
+</div>
+
+<div class="field form-group col-xs-12 col-sm-12 col-md-6">
+  <%= f.label :is_admin, "هل هو منشط؟", class: 'control-label' %>
+  <%= f.select :is_admin, [["نعم", true], ["ﻻ", false]], {:include_blank => true},{class: 'require form-control'} %>
+</div>
+
+<div class="field form-group col-xs-12 col-sm-12 col-md-6 pull-right">
+  <%= f.label :password,"كلمة المرور" %>
+  <%= f.password_field :password, class: 'form-control' %>
+</div>
+<div class="field form-group col-xs-12 col-sm-12 col-md-6">
+  <%= f.label :password_confirmation,"تأكيد كلمة المرور" %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+</div>
+
+<div class="field form-group">
+  <%= f.label :email,"الإيميل" %>
+  <%= f.email_field :email, class: 'require form-control', data_type: 'email' %>
+</div>
+
+<div class="actions">
+  <%= f.submit "حفظ",class: 'btn btn-primary' %>
+</div>
+<% end %>

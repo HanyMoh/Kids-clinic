@@ -8,4 +8,8 @@ class Visit < ApplicationRecord
   scope :current_turn, lambda { |visit_date|
     Visit.where(visit_date: visit_date).maximum('turn_num').to_i + 1
   }
+  scope :last_shank, lambda {order(created_at: :desc).limit(5)}
+  scope :current_visits, lambda {|visit_date|
+    Visit.where(visit_date: visit_date)
+  }
 end

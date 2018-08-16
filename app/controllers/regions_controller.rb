@@ -1,4 +1,5 @@
 class RegionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_region, only: [:edit, :update, :destroy]
 
   # GET /regions
@@ -9,11 +10,13 @@ class RegionsController < ApplicationController
 
   # GET /regions/new
   def new
+    authorize! :create, @region
     @region = Region.new
   end
 
   # GET /regions/1/edit
   def edit
+    authorize! :update, @region
   end
 
   # POST /regions
@@ -42,6 +45,7 @@ class RegionsController < ApplicationController
 
   # DELETE /regions/1
   def destroy
+    authorize! :destroy, @region
     @region.destroy
     respond_to do |format|
       format.html { redirect_to regions_url, notice: 'Region was successfully destroyed.' }

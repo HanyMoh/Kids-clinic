@@ -1,2 +1,32 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>بيانات المستخدمين</h1>
+<p>عدد العناصر المعروضة
+  <span class="badge badge-blue"><%= @users.count %></span>
+  عنصر</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Active</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @users.each do |user| %>
+      <td><%= user.id %></td>
+      <td><%= user.email %></td>
+      <td><%= user.is_admin %></td>
+      <td><%= user.is_active %></td>
+      <td>
+        <%= link_to edit_user_path(user), class: "btn btn-primary btn-xs"  do %>
+        <i class="fa fa-pencil"></i>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
