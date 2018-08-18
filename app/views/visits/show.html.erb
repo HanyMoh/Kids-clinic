@@ -23,8 +23,8 @@
 </p>
 <p>
   <strong>تاريخ الميلاد:</strong>
-  <%= @visit&.patient&.birthdate %> <br>
-  <%= time_ago_in_words @visit&.patient&.birthdate %>
+  <%= @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %> <br>
+  <%= time_ago_in_words @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %>
 </p>
 
 <p>
