@@ -1,0 +1,28 @@
+<div class="col-md-6 panel-info">
+  <div class="content-box-header  panel-heading">
+    <div class="panel-title">عرض الأطفال حسب المنطقة</div>
+    <div class="panel-options"></div>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= column_chart reports_kids_by_region_path %>
+  </div>
+</div>
+<div class="col-md-6 panel-info">
+  <div class="content-box-header  panel-heading">
+    <div class="panel-title">عرض الأطفال حسب العمر</div>
+    <div class="panel-options"></div>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= column_chart reports_kids_by_birthdate_path %>
+
+  </div>
+</div>
+<div class="col-md-6 panel-info">
+  <div class="content-box-header  panel-heading">
+    <div class="panel-title">نسبة الذكور للإناث</div>
+    <div class="panel-options"></div>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= pie_chart reports_gender_percentage_path %>
+  </div>
+</div>

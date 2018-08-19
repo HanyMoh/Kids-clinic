@@ -4,7 +4,7 @@ class RegionsController < ApplicationController
 
   # GET /regions
   def index
-    @regions = Region.all
+    @regions = Region.order('created_at desc')
   end
 
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Ihab Kids Clinic</title>
+    <title>Ehab kids clinic</title>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -28,7 +28,7 @@
             <!-- Logo -->
             <div class="logo">
               <h1>
-                <%= link_to "IHAB KIDS CLINIC", root_path %>
+                <%= link_to "Ehab kids clinic", root_path %>
               </h1>
             </div>
           </div>
@@ -84,7 +84,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to patients_path do %>
+            <%= link_to reports_index_path do %>
             <i class="glyphicon glyphicon-stats"></i>
             عرض التقارير
           <% end %>
@@ -97,7 +97,7 @@
       </li>
       <li class="submenu">
         <a href="#">
-          <i class="glyphicon glyphicon-list"></i>
+          <i class="glyphicon glyphicon-cog"></i>
           الإعدادات
           <span class="caret pull-right"></span>
         </a>
