@@ -8,26 +8,28 @@
     <%= link_to 'إضافة منطقة جدبدة', new_region_path, class: 'btn btn-primary' %>
     <br>
     <br>
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th class="text-center">اسم المنطقة</th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @regions.each do |region| %>
+    <div class="col-xs-12 table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
           <tr>
-            <td><%= region.name %></td>
-            <td><%= link_to 'تعديل', edit_region_path(region) %>
-              |
-              <%= link_to 'حذف', region, method: :delete, data: { confirm: 'هل أنت متأكد؟' } %></td>
+            <th class="text-center">اسم المنطقة</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
 
+        <tbody>
+          <% @regions.each do |region| %>
+            <tr>
+              <td><%= region.name %></td>
+              <td><%= link_to 'تعديل', edit_region_path(region) %>
+                |
+                <%= link_to 'حذف', region, method: :delete, data: { confirm: 'هل أنت متأكد؟' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
     <br>
 
     <%= link_to 'إضافة منطقة جدبدة', new_region_path, class: 'btn btn-primary' %>

@@ -17,7 +17,7 @@
   </div>
 </div>
 
-<div class="col-md-12 panel-success">
+<div class="col-md-12 panel-warning">
   <div class="content-box-header  panel-heading">
     <div class="panel-title">عرض حجوزات اليوم</div>
 
@@ -26,28 +26,30 @@
       زيارة</div>
   </div>
   <div class="content-box-large box-with-header">
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th class="text-center">م</th>
-          <th class="text-center">التاريخ</th>
-          <th class="text-center">اسم الحالة</th>
-          <th class="text-center">نوع ىالكشف</th>
-          <th class="text-center">ألدور</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @current_visits.each do |visit| %>
+    <div class="col-xs-12 table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
           <tr>
-            <td><%= link_to visit.code, visit %></td>
-            <td><%= visit.visit_date %></td>
-            <td><%= visit.patient&.name %></td>
-            <td><%= visit.visit_type&.name %></td>
-            <td><%= visit.turn_num %></td>
+            <th class="text-center">م</th>
+            <th class="text-center">التاريخ</th>
+            <th class="text-center">اسم الحالة</th>
+            <th class="text-center">نوع ىالكشف</th>
+            <th class="text-center">ألدور</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          <% @current_visits.each do |visit| %>
+            <tr>
+              <td><%= link_to visit.code, visit %></td>
+              <td><%= visit.visit_date %></td>
+              <td><%= visit.patient&.name %></td>
+              <td><%= visit.visit_type&.name %></td>
+              <td><%= visit.turn_num %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

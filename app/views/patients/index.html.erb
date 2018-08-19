@@ -8,30 +8,32 @@
     <%= link_to 'إضافة حالة جديدة', new_patient_path, class: 'btn btn-primary' %>
     <br>
     <br>
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th class="text-center">الكود</th>
-          <th class="text-center">الاسم</th>
-          <th class="text-center">العمر</th>
-          <th class="text-center">المنطقة</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @patients.each do |patient| %>
+    <div class="col-xs-12 table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
           <tr>
-            <td><%= patient.code %></td>
-            <td><%= link_to patient.name, patient %></td>
-            <td><%= time_ago_in_words patient.birthdate unless patient.birthdate.nil? %></td>
-            <td><%= patient.region&.name %></td>
-            <td><%= link_to 'تعديل', edit_patient_path(patient) %>
-              |
-              <%= link_to 'حذف', patient, method: :delete, data: { confirm: 'هل انت متاكد؟' } %></td>
+            <th class="text-center">الكود</th>
+            <th class="text-center">الاسم</th>
+            <th class="text-center">العمر</th>
+            <th class="text-center">المنطقة</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @patients.each do |patient| %>
+            <tr>
+              <td><%= patient.code %></td>
+              <td><%= link_to patient.name, patient %> <span class="badge"><%= patient.visits.size %> زيارة</span></td>
+              <td><%= time_ago_in_words patient.birthdate unless patient.birthdate.nil? %></td>
+              <td><%= patient.region&.name %></td>
+              <td><%= link_to 'تعديل', edit_patient_path(patient) %>
+                |
+                <%= link_to 'حذف', patient, method: :delete, data: { confirm: 'هل انت متاكد؟' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
     <br>
     <%= link_to 'إضافة حالة جديدة', new_patient_path, class: 'btn btn-primary' %>

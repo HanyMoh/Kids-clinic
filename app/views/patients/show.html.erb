@@ -43,7 +43,7 @@
 
 <div class="col-md-12 panel-warning">
   <div class="content-box-header  panel-heading">
-    <div class="panel-title">عرض بيانات حالة</div>
+    <div class="panel-title">عرض التاريخ المرضى للحالة</div>
     <div class="panel-options"></div>
   </div>
   <div class="content-box-large box-with-header">
@@ -53,7 +53,7 @@
         <% @patient.visits.each do |visit| %>
           <tr>
             <td rowspan="2">
-              <strong>رقم الزيارة</strong><br><i class="label label-info"><%= link_to visit.code, visit %></i></td>
+              <strong>رقم الزيارة</strong><br><i class="badge"><%= link_to visit.code, visit %></i></td>
             <td><strong>التاريخ: </strong><%= visit.visit_date %></td>
             <td><strong>نوع الكشف: </strong><%= visit.visit_type&.name %></td>
             <td><%= link_to 'تعديل', edit_visit_path(visit) %>
