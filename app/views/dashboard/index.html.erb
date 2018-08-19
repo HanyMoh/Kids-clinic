@@ -39,8 +39,8 @@
   </div>
   <div class="content-box-large box-with-header">
     <!-- < %= pie_chart Patient.group(:is_male).count %> -->
-    <%= line_chart Visit.select(:visit_date).group_by_day(:visit_date, format: "%B %d, %Y").count, discrete: true %>
-
+    <%= line_chart Visit.group_by_day(:visit_date, format: "%B %d, %Y").count, discrete: true %>
+<!-- group_by_day( -->
   </div>
 </div>
 
