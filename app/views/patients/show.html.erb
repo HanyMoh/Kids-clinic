@@ -1,40 +1,72 @@
-<div class="page-header">
-  <h1>
-    <small>عرض</small>
-    حالة</h1>
+<div class="col-md-12 panel-info">
+  <div class="content-box-header  panel-heading">
+    <div class="panel-title">عرض بيانات حالة</div>
+    <div class="panel-options"></div>
+  </div>
+  <div class="content-box-large box-with-header">
+    <p>
+      <strong>اسم الحالة</strong>
+      <%= @patient.name %>
+    </p>
+
+    <p>
+      <strong>الهاتف:</strong>
+      <%= @patient.phone %>
+    </p>
+
+    <p>
+      <strong>تاريخ الميلاد:</strong>
+      <%= @patient.birthdate %>
+      <br>
+      <%= time_ago_in_words @patient.birthdate unless @patient.birthdate.nil? %>
+    </p>
+
+    <p>
+      <strong>المنطقة:</strong>
+      <%= @patient.region&.name %>
+    </p>
+
+    <p>
+      <strong>العنوان:</strong>
+      <%= @patient.address %>
+    </p>
+
+    <p>
+      <strong>ملاجظات:</strong>
+      <%= @patient.note %>
+    </p>
+
+    <%= link_to 'تعديل', edit_patient_path(@patient), class: 'btn btn-success pull-left' %>
+    <%= link_to 'عودة', patients_path, class: 'btn btn-success pull-left' %>
+  </div>
 </div>
 
-<p>
-  <strong>اسم الحالة</strong>
-  <%= @patient.name %>
-</p>
+<div class="col-md-12 panel-warning">
+  <div class="content-box-header  panel-heading">
+    <div class="panel-title">عرض بيانات حالة</div>
+    <div class="panel-options"></div>
+  </div>
+  <div class="content-box-large box-with-header">
+    <table class="table table-striped table-bordered">
 
-<p>
-  <strong>الهاتف:</strong>
-  <%= @patient.phone %>
-</p>
+      <tbody>
+        <% @patient.visits.each do |visit| %>
+          <tr>
+            <td rowspan="2">
+              <strong>رقم الزيارة</strong><br><i class="label label-info"><%= link_to visit.code, visit %></i></td>
+            <td><strong>التاريخ: </strong><%= visit.visit_date %></td>
+            <td><strong>نوع الكشف: </strong><%= visit.visit_type&.name %></td>
+            <td><%= link_to 'تعديل', edit_visit_path(visit) %>
+              |
+              <%= link_to 'حذف', visit, method: :delete, data: { confirm: 'هل أنت متأكد؟' } %></td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong>التشخيص:</strong><br><%= visit.description %></td>
+            <td colspan="2"><strong>العلاج:</strong><br><%= visit.medicament %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<p>
-  <strong>تاريخ الميلاد:</strong>
-  <%= @patient.birthdate %> <br>
-  <%= time_ago_in_words @patient.birthdate unless @patient.birthdate.nil? %>
-</p>
-
-<p>
-  <strong>المنطقة:</strong>
-  <%= @patient.region&.name %>
-</p>
-
-<p>
-  <strong>العنوان:</strong>
-  <%= @patient.address %>
-</p>
-
-<p>
-  <strong>ملاجظات:</strong>
-  <%= @patient.note %>
-</p>
-
-
-<%= link_to 'تعديل', edit_patient_path(@patient), class: 'btn btn-success pull-left' %>
-<%= link_to 'عودة', patients_path, class: 'btn btn-success pull-left' %>
+  </div>
+</div>

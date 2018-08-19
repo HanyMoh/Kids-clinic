@@ -50,6 +50,12 @@
 </div>
 <div class="col-md-6">
   <div class="form-group">
+    <%= form.label :medicament,"العلاج" %>
+    <%= form.text_area :medicament, id: :visit_description, class: "form-control" %>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="form-group">
     <%= form.label :note,"ملاحظات" %>
     <%= form.text_area :note, id: :visit_note, class: "form-control" %>
   </div>
