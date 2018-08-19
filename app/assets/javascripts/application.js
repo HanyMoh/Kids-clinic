@@ -2,6 +2,8 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker/core
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 
 $(document).ready(function() {

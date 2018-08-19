@@ -60,6 +60,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    chartkick (3.0.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.2.2)
@@ -82,6 +83,8 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.0.1)
+      activesupport (>= 4.2)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -211,8 +214,10 @@ DEPENDENCIES
   byebug
   cancan (~> 1.6.10)
   capybara (~> 2.13)
+  chartkick
   coffee-rails (~> 4.2)
   devise
+  groupdate
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

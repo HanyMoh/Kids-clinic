@@ -33,11 +33,13 @@
 
 <div class="col-md-6 panel-info">
   <div class="content-box-header  panel-heading">
-    <div class="panel-title">عرض أحدث 5 زيارات</div>
+    <div class="panel-title">حالة الزيارات فى فترة</div>
 
     <div class="panel-options"></div>
   </div>
   <div class="content-box-large box-with-header">
+    <!-- < %= pie_chart Patient.group(:is_male).count %> -->
+    <%= line_chart Visit.group_by_day(:visit_date, format: "%B %d, %Y").count, discrete: true %>
 
   </div>
 </div>
@@ -46,7 +48,9 @@
   <div class="content-box-header  panel-heading">
     <div class="panel-title">عرض حجوزات اليوم</div>
 
-    <div class="panel-options">عرض <%= @current_visits.size %> زيارة</div>
+    <div class="panel-options">عرض
+      <%= @current_visits.size %>
+      زيارة</div>
   </div>
   <div class="content-box-large box-with-header">
     <table class="table table-striped table-bordered">
