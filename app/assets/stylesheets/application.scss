@@ -2,3 +2,27 @@
 @import "bootstrap";
 @import "bootstrap-datepicker3";
 @import "styles";
+
+@import url("https://fonts.googleapis.com/earlyaccess/notokufiarabic.css");
+@import url("https://fonts.googleapis.com/earlyaccess/notonaskharabic.css");
+
+body{
+  font-family: 'Noto Kufi Arabic', sans-serif !important;
+}
+
+/*Link
+@import url(//fonts.googleapis.com/earlyaccess/notokufiarabic.css);
+Example
+font-family: 'Noto Kufi Arabic', sans-serif;
+
+Noto Naskh Arabic (Arabic)
+Link
+@import url(//fonts.googleapis.com/earlyaccess/notonaskharabic.css);
+Example
+font-family: 'Noto Naskh Arabic', serif;
+
+Noto Naskh Arabic UI (Arabic)
+Link
+@import url(//fonts.googleapis.com/earlyaccess/notonaskharabicui.css);
+Example
+font-family: 'Noto Naskh Arabic UI', serif;*/
