@@ -1,46 +1,19 @@
 <div class="col-md-6 panel-info">
   <div class="content-box-header  panel-heading">
-    <div class="panel-title">عرض أحدث 5 زيارات</div>
-
+    <div class="panel-title">الزيارات فى ها الشهر</div>
     <div class="panel-options"></div>
   </div>
   <div class="content-box-large box-with-header">
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th class="text-center">م</th>
-          <th class="text-center">التاريخ</th>
-          <th class="text-center">اسم الحالة</th>
-          <th class="text-center">نوع ىالكشف</th>
-          <th class="text-center">ألدور</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @last_shank.each do |visit| %>
-          <tr>
-            <td><%= link_to visit.code, visit %></td>
-            <td><%= visit.visit_date %></td>
-            <td><%= visit.patient&.name %></td>
-            <td><%= visit.visit_type&.name %></td>
-            <td><%= visit.turn_num %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= line_chart Visit.group_by_day(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
   </div>
 </div>
-
 <div class="col-md-6 panel-info">
   <div class="content-box-header  panel-heading">
-    <div class="panel-title">حالة الزيارات فى فترة</div>
-
+    <div class="panel-title">نسبة الذكور للإناث</div>
     <div class="panel-options"></div>
   </div>
   <div class="content-box-large box-with-header">
-    <!-- < %= pie_chart Patient.group(:is_male).count %> -->
-    <%= line_chart Visit.group_by_day(:visit_date, format: "%B %d, %Y").count, discrete: true %>
-<!-- group_by_day( -->
+    <%= pie_chart dashboard_male_female_percentage_path %>
   </div>
 </div>
 

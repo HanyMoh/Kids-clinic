@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # note: put this after the 'devise_for :users' line
   resources :users, only: [:index, :edit, :update]
   root to: 'dashboard#index'
+  get 'dashboard/male_female_percentage'
 end

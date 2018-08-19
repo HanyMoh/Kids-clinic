@@ -10,6 +10,6 @@ class Visit < ApplicationRecord
   }
   scope :last_shank, lambda {order(created_at: :desc).limit(5)}
   scope :current_visits, lambda {|visit_date|
-    Visit.where(visit_date: visit_date)
+    Visit.where(visit_date: visit_date).order(created_at: :desc)
   }
 end

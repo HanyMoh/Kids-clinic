@@ -4,7 +4,7 @@ class VisitsController < ApplicationController
 
   # GET /visits
   def index
-    @visits = Visit.all
+    @visits = Visit.order(created_at: :desc)
   end
 
   # GET /visits/1
