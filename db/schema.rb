@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180816122921) do
+ActiveRecord::Schema.define(version: 20180819025032) do
 
   create_table "patients", force: :cascade do |t|
     t.integer "code"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180816122921) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_male", default: true
     t.index ["region_id"], name: "index_patients_on_region_id"
   end
 
