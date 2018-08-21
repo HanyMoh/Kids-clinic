@@ -1,9 +1,13 @@
-<div class="page-header">
-  <h1>
-    <small>إضافة</small>
-    زيارة</h1>
-</div>
+<div class="col-md-12 panel-info">
+  <div class="content-box-header  panel-heading">
+    <div class="panel-title">إضافة زيارة جديدة</div>
+    <div class="panel-options"></div>
+  </div>
+  <div class="content-box-large box-with-header">
 
-<%= render 'form', visit: @visit %>
-<br/>
-<%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
+    <%= render 'form', visit: @visit %>
+    <br/>
+    <%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
+
+  </div>
+</div>

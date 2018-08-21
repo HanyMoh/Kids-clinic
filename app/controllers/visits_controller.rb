@@ -4,7 +4,16 @@ class VisitsController < ApplicationController
 
   # GET /visits
   def index
-    @visits = Visit.order(created_at: :desc)
+    page_size = params[:page_size]
+    @q =  Visit.ransack(params[:q])
+    @q.sorts = 'created_at DESC' if @q.sorts.empty?
+    @visits = @q.result
+    @visits = @visits.page(params[:page])
+    @visits = @visits.per(page_size) unless page_size&.empty?
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /visits/1
@@ -70,6 +79,6 @@ class VisitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def visit_params
-      params.require(:visit).permit(:visit_date, :patient_id, :visit_type_id, :description, :note, :user_id, :code, :turn_num, :medicament)
+      params.require(:visit).permit(:visit_date, :patient_id, :visit_type_id, :note, :user_id, :code, :turn_num)
     end
 end

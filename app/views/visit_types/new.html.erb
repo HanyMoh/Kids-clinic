@@ -1,7 +1,13 @@
-<div class="page-header">
-  <h1><small>إضافة</small> نوع كشف</h1>
-</div>
+<div class="col-md-12 panel-info">
+  <div class="content-box-header  panel-heading">
+    <div class="panel-title">إضافة نوع كشف جديد</div>
+    <div class="panel-options"></div>
+  </div>
+  <div class="content-box-large box-with-header">
 
-<%= render 'form', visit_type: @visit_type %>
-<br />
-<%= link_to 'عودة', visit_types_path, class: 'btn btn-success pull-left' %>
+    <%= render 'form', visit_type: @visit_type %>
+    <br/>
+    <%= link_to 'عودة', visit_types_path, class: 'btn btn-success pull-left' %>
+
+  </div>
+</div>

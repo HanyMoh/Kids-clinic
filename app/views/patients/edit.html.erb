@@ -1,10 +1,13 @@
-<div class="page-header">
-  <h1><small>تعديل</small> حالة</h1>
+<div class="col-md-12 panel-info">
+  <div class="content-box-header  panel-heading">
+    <div class="panel-title">تعديل بيانات حالة</div>
+    <div class="panel-options"></div>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= render 'form', patient: @patient %>
+
+    <br/>
+    <%= link_to 'عرض', @patient, class: 'btn btn-default pull-left' %>
+    <%= link_to 'عودة', patients_path, class: 'btn btn-success pull-left' %>
+  </div>
 </div>
-
-<%= render 'form', patient: @patient %>
-
-
-<br />
-<%= link_to 'عرض', @patient, class: 'btn btn-default pull-left' %>
-<%= link_to 'عودة', patients_path, class: 'btn btn-success pull-left' %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :medicaments
+  resources :diagnoses
   get 'users/index'
 
   get 'users/edit'

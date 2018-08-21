@@ -1,0 +1,38 @@
+
+<div class="col-md-12 panel-info">
+  <div class="content-box-header  panel-heading">
+    <div class="panel-title">عرض الأدوية</div>
+    <div class="panel-options"></div>
+  </div>
+  <div class="content-box-large box-with-header">
+
+    <%= link_to 'إضافة دواء جدبد', new_medicament_path, class: 'btn btn-primary' %>
+    <br>
+    <br>
+    <div class="col-xs-12 table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center">اسم الدواء</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @medicaments.each do |medicament| %>
+            <tr>
+              <td><%= medicament.name %></td>
+              <td><%= link_to 'تعديل', edit_medicament_path(medicament) %>
+                |
+                <%= link_to 'حذف', medicament, method: :delete, data: { confirm: 'هل أنت متأكد؟' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+    <br>
+
+    <%= link_to 'إضافة دواء جدبد', new_medicament_path, class: 'btn btn-primary' %>
+  </div>
+</div>

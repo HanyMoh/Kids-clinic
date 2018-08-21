@@ -1,13 +1,13 @@
 <div class="col-md-12 panel-info">
   <div class="content-box-header  panel-heading">
-    <div class="panel-title">تعديل منطقة</div>
+    <div class="panel-title">إضافة تشخيص جديد</div>
     <div class="panel-options"></div>
   </div>
   <div class="content-box-large box-with-header">
 
-    <%= render 'form', region: @region %>
+    <%= render 'form', diagnosis: @diagnosis %>
 
     <br/>
-    <%= link_to 'عودة', regions_path, class: 'btn btn-success pull-left' %>
+    <%= link_to 'عودة', diagnoses_path, class: 'btn btn-success pull-left' %>
   </div>
 </div>

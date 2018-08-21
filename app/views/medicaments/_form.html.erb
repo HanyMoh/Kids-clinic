@@ -1,0 +1,22 @@
+<%= form_with(model: medicament, local: true) do |form| %>
+  <% if medicament.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(medicament.errors.count, "error") %> prohibited this medicament from being saved:</h2>
+
+      <ul>
+      <% medicament.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, "اسم الدواء" %>
+    <%= form.text_field :name, id: :region_name, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "حفظ", class: "btn btn-primary" %>
+  </div>
+<% end %>

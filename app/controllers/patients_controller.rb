@@ -5,7 +5,16 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.order(created_at: :desc)
+    page_size = params[:page_size]
+    @q =  Patient.ransack(params[:q])
+    @q.sorts = 'created_at DESC' if @q.sorts.empty?
+    @patients = @q.result
+    @patients = @patients.page(params[:page])
+    @patients = @patients.per(page_size) unless page_size&.empty?
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /patients/1
