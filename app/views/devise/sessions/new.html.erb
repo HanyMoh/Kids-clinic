@@ -2,7 +2,7 @@
   <h6>تسجيل الدخول</h6>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <%= f.text_field :email,autofocus: true,placeholder:"ألبريد الإلكترونى", class: "form-control" %>
+  <%= f.text_field :email,autofocus: true,placeholder:"البريد الإلكترونى", class: "form-control" %>
   <%= f.password_field :password, autocomplete: "off",placeholder:"كلمة المرور", class: "form-control" %>
 
   <% if devise_mapping.rememberable? -%>

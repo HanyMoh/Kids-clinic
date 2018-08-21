@@ -1,3 +1,4 @@
+<% patients_select = get_patients_select %>
 <%= form_with(model: visit, local: true) do |form| %>
 <% if visit.errors.any? %>
   <div id="error_explanation">
@@ -33,7 +34,7 @@
 <div class="col-md-6">
   <div class="form-group">
     <%= form.label :patient_id,"الحالة" %>
-    <%= form.collection_select :patient_id, Patient.all, :id, :name, { :include_blank => true }, { :class=> "form-control" } %>
+    <%= form.select(:patient_id, options_for_select(patients_select, visit.patient_id), {include_blank: true}, {class: 'form-control select2'}) %>
   </div>
 </div>
 <div class="col-md-6">

@@ -2,20 +2,23 @@
 @import "bootstrap";
 @import "bootstrap-datepicker3";
 @import "styles";
+@import "select2";
 
 @import url("https://fonts.googleapis.com/earlyaccess/notokufiarabic.css");
 @import url("https://fonts.googleapis.com/earlyaccess/notonaskharabic.css");
 
-body{
+body {
   font-family: 'Noto Kufi Arabic', sans-serif !important;
 }
-.dropdown-menu{
+
+.dropdown-menu {
   right: unset !important;
 }
 
-.badge a{
+.badge a {
   color: #FFF !important;
 }
-.panel-title{
-  float:right !important;
+
+.panel-title {
+  float: right !important;
 }

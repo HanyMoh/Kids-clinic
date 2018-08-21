@@ -40,6 +40,8 @@ gem 'cancan', '~> 1.6.10'
 gem 'ransack'
 gem 'chartkick'
 gem 'groupdate'
+gem "select2-rails"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

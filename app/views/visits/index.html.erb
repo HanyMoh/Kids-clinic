@@ -27,7 +27,7 @@
             <tr>
               <td><%= link_to visit.code, visit %></td>
               <td><%= visit.visit_date %></td>
-              <td><%= visit.patient&.name %></td>
+              <td><%= link_to visit.patient&.name, visit.patient %></td>
               <td><%= visit.visit_type&.name %></td>
               <td><%= visit.turn_num %></td>
               <td><%= visit.user&.email %></td>
