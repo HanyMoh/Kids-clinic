@@ -1,60 +1,66 @@
 <% patients_select = get_patients_select %>
-<%= form_with(model: visit, local: true) do |form| %>
-<% if visit.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(visit.errors.count, "error") %>
-      prohibited this visit from being saved:</h2>
+<% medicaments_select = get_medicaments_select %>
+<% diagnoses_select = get_diagnoses_select %>
+  <%= form_for(@visit, local: true) do |form| %>
+  <% if @visit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@visit.errors.count, "error") %>
+        prohibited this visit from being saved:</h2>
 
-    <ul>
-      <% visit.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+      <ul>
+        <% @visit.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<div class="col-md-4">
-  <div class="form-group">
-    <%= form.label :visit_date,"تاريخ الكشف" %>
-    <%= form.text_field :visit_date, class: "form-control datepicker" %>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= form.label :visit_date,"تاريخ الكشف" %>
+      <%= form.text_field :visit_date, class: "form-control datepicker" %>
+    </div>
   </div>
-</div>
-<div class="col-md-4">
-  <div class="form-group">
-    <%= form.label :code,"رقم الكشف" %>
-    <%= form.text_field :code, id: :visit_code, class: "form-control" %>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= form.label :code,"رقم الكشف" %>
+      <%= form.text_field :code, id: :visit_code, class: "form-control" %>
+    </div>
   </div>
-</div>
-<div class="col-md-4">
-  <div class="form-group">
-    <%= form.label :turn_num,"الدور" %>
-    <%= form.text_field :turn_num, id: :turn_num_date, class: "form-control" %>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= form.label :turn_num,"الدور" %>
+      <%= form.text_field :turn_num, id: :turn_num_date, class: "form-control" %>
+    </div>
   </div>
-</div>
-<div class="col-md-6">
-  <div class="form-group">
-    <%= form.label :patient_id,"الحالة" %>
-    <%= form.select(:patient_id, options_for_select(patients_select, visit.patient_id), {include_blank: true}, {class: 'form-control select2'}) %>
+  <div class="col-md-6">
+    <div class="form-group">
+      <%= form.label :patient_id,"الحالة" %>
+      <%= form.select(:patient_id, options_for_select(patients_select, visit.patient_id), {include_blank: true}, {class: 'form-control select2'}) %>
+    </div>
   </div>
-</div>
-<div class="col-md-6">
-  <div class="form-group">
-    <%= form.label :visit_type_id,"نوع الكشف" %>
-    <%= form.collection_select :visit_type_id, VisitType.all, :id, :name, { :include_blank => true }, { :class=> "form-control" } %>
+  <div class="col-md-6">
+    <div class="form-group">
+      <%= form.label :visit_type_id,"نوع الكشف" %>
+      <%= form.collection_select :visit_type_id, VisitType.all, :id, :name, { :include_blank => true }, { :class=> "form-control" } %>
+    </div>
   </div>
-</div>
-<div class="col-md-6">
-  <div class="form-group">
-    <%= form.label :description,"التشخيص" %>
-    <%= form.text_area :description, id: :visit_description, class: "form-control" %>
+  <div class="col-md-6" id="diagnoses">
+    <%= form.fields_for :diagnoses do |diagnosis| %>
+      <%= render 'diagnosis_fields', f: diagnosis %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add diagnosis', form, :diagnoses %>
+    </div>
   </div>
-</div>
-<div class="col-md-6">
-  <div class="form-group">
-    <%= form.label :medicament,"العلاج" %>
-    <%= form.text_area :medicament, id: :visit_description, class: "form-control" %>
+  <div class="col-md-6" id="medicaments">
+    <%= form.fields_for :medicaments do |medicament| %>
+      <%= render 'medicament_fields', f: medicament %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add medicament', form, :medicaments %>
+    </div>
   </div>
-</div>
 <div class="col-md-12">
   <div class="form-group">
     <%= form.label :note,"ملاحظات" %>

@@ -77,8 +77,9 @@ class VisitsController < ApplicationController
       @visit = Visit.find(params[:id])
     end
 
+    name
     # Never trust parameters from the scary internet, only allow the white list through.
     def visit_params
-      params.require(:visit).permit(:visit_date, :patient_id, :visit_type_id, :note, :user_id, :code, :turn_num)
+      params.require(:visit).permit(:visit_date, :patient_id, :visit_type_id, :note, :user_id, :code, :turn_num, diagnoses_attributes: [:id, :name, :_destroy], medicaments_attributes: [:id, :name, :_destroy])
     end
 end

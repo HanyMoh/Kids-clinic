@@ -1,0 +1,4 @@
+<div class="form-group">
+  <%= form.label :medicament_id,"الدواء" %>
+  <%= form.select(:medicament_id, options_for_select(medicaments_select, visit.medicament_id), {include_blank: true}, {class: 'form-control select2'}) %>
+</div>

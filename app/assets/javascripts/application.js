@@ -5,10 +5,12 @@
 //= require Chart.bundle
 //= require chartkick
 //= require select2
+//= require cocoon
 //= require_tree .
 
 $(document).ready(function() {
   $('select.select2').select2();
+
   $(".submenu > a").click(function(e) {
     e.preventDefault();
     var $li = $(this).parent("li");
