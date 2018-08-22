@@ -38,11 +38,25 @@
 
 <p>
   <strong>التشخيص:</strong>
-  <%= @visit.description %>
+  <ul>
+      <% @visit.visit_diagnoses.each do |a| %>
+        <li>
+          <%= a&.diagnosis&.name %>
+        </li>
+      <% end %>
+    </ul>
+
+
 </p>
 <p>
   <strong>العلاج:</strong>
-  <%= @visit.medicament %>
+  <ul>
+      <% @visit.visit_medicaments.each do |a| %>
+        <li>
+          <%= a&.medicament&.name %>
+        </li>
+      <% end %>
+    </ul>
 </p>
 
 <p>

@@ -9,5 +9,6 @@
 #
 
 class Diagnosis < ApplicationRecord
+  has_many :visit_diagnoses
   validates :name, presence: true, length: { within: 2..40 }, uniqueness: true
 end

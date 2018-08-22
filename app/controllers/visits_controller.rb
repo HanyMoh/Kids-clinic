@@ -28,6 +28,8 @@ class VisitsController < ApplicationController
     @visit.code = Visit.max_code
     @visit.turn_num = Visit.current_turn Date.current
     @visit.visit_date = Date.current
+    3.times{ @visit.visit_medicaments.build }
+    3.times{ @visit.visit_diagnoses.build }
   end
 
   # GET /visits/1/edit
@@ -80,6 +82,10 @@ class VisitsController < ApplicationController
     name
     # Never trust parameters from the scary internet, only allow the white list through.
     def visit_params
-      params.require(:visit).permit(:visit_date, :patient_id, :visit_type_id, :note, :user_id, :code, :turn_num, diagnoses_attributes: [:id, :name, :_destroy], medicaments_attributes: [:id, :name, :_destroy])
+      params.require(:visit).permit(
+        :visit_date, :patient_id, :visit_type_id, :note, :user_id, :code, :turn_num,
+        visit_medicaments_attributes: [:id, :medicament_id, :_destroy],
+        visit_diagnoses_attributes: [:id, :diagnosis_id, :_destroy],
+      )
     end
 end

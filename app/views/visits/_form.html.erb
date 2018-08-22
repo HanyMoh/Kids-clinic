@@ -45,21 +45,24 @@
       <%= form.collection_select :visit_type_id, VisitType.all, :id, :name, { :include_blank => true }, { :class=> "form-control" } %>
     </div>
   </div>
+
   <div class="col-md-6" id="diagnoses">
-    <%= form.fields_for :diagnoses do |diagnosis| %>
-      <%= render 'diagnosis_fields', f: diagnosis %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add diagnosis', form, :diagnoses %>
-    </div>
+
+    <%= form.fields_for :visit_diagnoses do |f| %>
+     <div>
+       <%= f.select(:diagnosis_id, options_for_select(diagnoses_select, @visit.visit_diagnoses.first.diagnosis_id), {include_blank: true}, {class: 'form-control select2'}) %>
+     </div>
+   <% end %>
+
   </div>
   <div class="col-md-6" id="medicaments">
-    <%= form.fields_for :medicaments do |medicament| %>
-      <%= render 'medicament_fields', f: medicament %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add medicament', form, :medicaments %>
-    </div>
+
+    <%= form.fields_for :visit_medicaments do |f| %>
+     <div>
+       <%= f.select(:medicament_id, options_for_select(medicaments_select, @visit.visit_medicaments.first.medicament_id), {include_blank: true}, {class: 'form-control select2'}) %>
+     </div>
+   <% end %>
+
   </div>
 <div class="col-md-12">
   <div class="form-group">

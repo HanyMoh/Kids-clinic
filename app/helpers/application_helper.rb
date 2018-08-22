@@ -8,7 +8,7 @@ module ApplicationHelper
     rv = Diagnosis.order(:name).select([ :name, :id ])
     return rv.map{ |y| [ y.name, y.id ] }
   end
-  
+
   def get_medicaments_select
     rv = Medicament.order(:name).select([ :name, :id ])
     return rv.map{ |y| [ y.name, y.id ] }
