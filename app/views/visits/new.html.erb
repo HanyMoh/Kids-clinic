@@ -1,13 +1,19 @@
-<div class="col-md-12 panel-info">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">إضافة زيارة جديدة</div>
-    <div class="panel-options"></div>
-  </div>
-  <div class="content-box-large box-with-header">
+<!-- <div class="panel-title">إضافة زيارة جديدة</div> -->
 
-    <%= render 'form', visit: @visit %>
-    <br/>
-    <%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
-
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="ibox">
+      <div class="ibox-title">
+        <h5>Basic form
+          <small>Simple login form example</small>
+        </h5>
+      </div>
+      <div class="ibox-content">
+        <div class="row">
+          <%= render 'form', visit: @visit %>
+          <%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

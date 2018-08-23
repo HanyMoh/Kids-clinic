@@ -1,0 +1,4 @@
+<% diagnoses_select = get_diagnoses_select %>
+<div class="form-group">
+    <%= f.select(:diagnosis_id, options_for_select(diagnoses_select, @visit.visit_diagnoses.first.diagnosis_id), {include_blank: true}, {class: 'form-control select2'}) %>
+</div>

@@ -28,8 +28,8 @@ class VisitsController < ApplicationController
     @visit.code = Visit.max_code
     @visit.turn_num = Visit.current_turn Date.current
     @visit.visit_date = Date.current
-    3.times{ @visit.visit_medicaments.build }
-    3.times{ @visit.visit_diagnoses.build }
+    @visit.visit_medicaments.build
+    @visit.visit_diagnoses.build
   end
 
   # GET /visits/1/edit

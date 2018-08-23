@@ -17,4 +17,6 @@
 class VisitDiagnosis < ApplicationRecord
   belongs_to :visit
   belongs_to :diagnosis
+
+  validates_uniqueness_of :diagnosis_id, scope: :visit_id
 end

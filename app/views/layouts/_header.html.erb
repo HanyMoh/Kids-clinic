@@ -1,46 +1,54 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Ehab kids clinic", root_path, class: "navbar-brand" %>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-     <ul class="nav navbar-nav">
-       <% if user_signed_in? %>
-       <li class="active"><%= link_to 'إضافة زيارة جديدة', new_visit_path %></li>
-       <li><%= link_to "إضافة حالة جديدة", new_patient_path %></li>
-       <li class="dropdown">
-         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">الإعدادات <span class="caret"></span></a>
-         <ul class="dropdown-menu">
-           <li><%= link_to 'المنطقة', regions_path %></li>
-           <li><%= link_to 'انواع الكشف', visit_types_path %></li>
-           <li><%= link_to "الحالات", patients_path %></li>
-           <li role="separator" class="divider"></li>
-           <li><%= link_to 'الزيارات', visits_path %></li>
-           <li role="separator" class="divider"></li>
-           <li><%= link_to "المستخدمين", users_index_path %></li>
-           <li><a href="#">One more separated link</a></li>
-           <li><a href="#">One more separated link</a></li>
-         </ul>
-       </li>
-       <% end %>
-     </ul>
-     <ul class="nav navbar-nav navbar-right">
-       <% if user_signed_in? %>
-         <li><%= link_to "خروج", destroy_user_session_path, method: :delete %></li>
-       <% else %>
-         <!-- <li>< %= link_to "تسجيل جديد", new_user_registration_path %></li> -->
-         <li><%= link_to "دخول", new_user_session_path %></li>
-       <% end %>
-     </ul>
-   </div><!-- /.navbar-collapse -->
- </div><!-- /.container-fluid -->
-</nav>
+<div class="sidebar content-box" style="display: block;">
+  <ul class="nav">
+    <!-- Main menu -->
+    <li class="current">
+      <%= link_to root_path do %>
+        <i class="glyphicon glyphicon-home"></i>
+        الرئيسية
+      <% end %>
+    </li>
+    <li>
+      <%= link_to visits_path do %>
+        <i class="glyphicon glyphicon-calendar"></i>
+        عرض الزيارات
+      <% end %>
+    </li>
+    <li>
+      <%= link_to reports_index_path do %>
+        <i class="glyphicon glyphicon-stats"></i>
+        عرض التقارير
+      <% end %>
+    </li>
+    <li>
+      <%= link_to patients_path do %>
+        <i class="glyphicon glyphicon-list"></i>
+      عرض الحالات
+      <% end %>
+    </li>
+    <li class="submenu">
+      <a href="#">
+      <i class="glyphicon glyphicon-cog"></i>
+      الإعدادات
+      <span class="caret pull-right"></span>
+      </a>
+      <!-- Sub menu -->
+      <ul>
+        <li>
+          <%= link_to "التشخيصات", diagnoses_path %>
+        </li>
+        <li>
+          <%= link_to "الأدوية", medicaments_path %>
+        </li>
+        <li>
+          <%= link_to "المناطق", regions_path %>
+        </li>
+        <li>
+          <%= link_to "نوع الكشف", visit_types_path %>
+        </li>
+        <li>
+          <%= link_to "المستخدمين", users_index_path %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

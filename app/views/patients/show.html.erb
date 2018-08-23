@@ -53,16 +53,41 @@
         <% @patient.visits.each do |visit| %>
           <tr>
             <td rowspan="2">
-              <strong>رقم الزيارة</strong><br><i class="badge"><%= link_to visit.code, visit %></i></td>
-            <td><strong>التاريخ: </strong><%= visit.visit_date %></td>
-            <td><strong>نوع الكشف: </strong><%= visit.visit_type&.name %></td>
+              <strong>رقم الزيارة</strong><br>
+              <i><%= link_to "N#{visit.code}", visit %></i>
+            </td>
+            <td>
+              <strong>التاريخ:
+              </strong><%= visit.visit_date %></td>
+            <td>
+              <strong>نوع الكشف:
+              </strong><%= visit.visit_type&.name %></td>
             <td><%= link_to 'تعديل', edit_visit_path(visit) %>
               |
               <%= link_to 'حذف', visit, method: :delete, data: { confirm: 'هل أنت متأكد؟' } %></td>
           </tr>
           <tr>
-            <td colspan="2"><strong>التشخيص:</strong><br><%= visit.description %></td>
-            <td colspan="2"><strong>العلاج:</strong><br><%= visit.medicament %></td>
+            <td colspan="2">
+              <strong>التشخيص:</strong>
+              <ul>
+                  <% visit.visit_diagnoses.each do |a| %>
+                    <li>
+                      <%= a&.diagnosis&.name %>
+                    </li>
+                  <% end %>
+                </ul>
+
+            </td>
+            <td colspan="2">
+              <strong>العلاج:</strong>
+              <ul>
+                <% visit.visit_medicaments.each do |a| %>
+                  <li>
+                    <%= a&.medicament&.name %>
+                  </li>
+                <% end %>
+              </ul>
+            </td>
           </tr>
         <% end %>
       </tbody>

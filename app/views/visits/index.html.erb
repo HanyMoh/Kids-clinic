@@ -25,7 +25,7 @@
         <tbody>
           <% @visits.each do |visit| %>
             <tr>
-              <td><%= link_to visit.code, visit %></td>
+              <td><%= link_to "N#{visit.code}", visit %></td>
               <td><%= visit.visit_date %></td>
               <td><%= link_to visit.patient&.name, visit.patient %></td>
               <td><%= visit.visit_type&.name %></td>
