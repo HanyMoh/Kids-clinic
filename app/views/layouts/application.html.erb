@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-flipped.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-flipped.css"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,67 +22,64 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-    <div class="header">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5">
-            <!-- Logo -->
-            <div class="logo">
-              <h1>
-                <%= link_to "Ehab kids clinic", root_path %>
-              </h1>
-            </div>
+  <body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+
+      <header class="main-header">
+        <!-- Logo -->
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <!-- <span class="logo-mini"><b>A</b>LT</span> -->
+        <!-- logo for regular state and mobile devices -->
+        <!-- <span class="logo-lg"><b>Admin</b>LTE</span> -->
+        <%= link_to "Ehab kids clinic", root_path, class: 'logo' %>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="hidden-xs"><%= current_user.email %></span>
+                </a>
+              </li>
+              <li>
+                <%= link_to "خروج", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
           </div>
-          <div class="col-md-5">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="input-group form">
-                  <input type="text" class="form-control" placeholder="بحث ...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">بحث</button>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="navbar navbar-inverse" role="banner">
-              <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-                <ul class="nav navbar-nav">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %>
-                      <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu animated fadeInUp">
-                      <li>
-                        <%= link_to "خروج", destroy_user_session_path, method: :delete %>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
+        </nav>
+      </header>
     </div>
+
+    <%= render "layouts/aside" %>
+    <%= render "layouts/content_wrapper" %>
+
+
+
     <div class="page-content">
       <div class="row">
         <div class="col-md-2">
           <%= render 'layouts/header' %>
 
-</div>
-<div class="col-md-10">
-  <div class="row">
+        </div>
+        <div class="col-md-10">
+          <div class="row">
 
-
-    <%= render "layouts/flash" %>
-    <%= yield :flash_message %>
-    <%= yield %>
-  </div>
-</div>
-</div>
-</div>
-</body>
+            <%= render "layouts/flash" %>
+            <%= yield :flash_message %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+  </body>
 </html>

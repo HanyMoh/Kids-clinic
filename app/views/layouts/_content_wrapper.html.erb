@@ -1,0 +1,16 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <%= render "layouts/flash" %>
+    <%= yield :flash_message %>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <%= yield %>
+  </section>
+  <!-- /.content -->
+  
+</div>
+<!-- /.content-wrapper -->
