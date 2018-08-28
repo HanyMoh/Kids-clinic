@@ -1,19 +1,11 @@
-<!-- <div class="panel-title">إضافة زيارة جديدة</div> -->
-
-<div class="wrapper wrapper-content">
-  <div class="row">
-    <div class="ibox">
-      <div class="ibox-title">
-        <h5>Basic form
-          <small>Simple login form example</small>
-        </h5>
-      </div>
-      <div class="ibox-content">
-        <div class="row">
-          <%= render 'form', visit: @visit %>
-          <%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
-        </div>
-      </div>
-    </div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">إضافة زيارة جديدة</h3>
+  </div>
+  <div class="box-body">
+    <%= render 'form', visit: @visit %>
+  </div>
+  <div class="box-footer">
+    <%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
   </div>
 </div>

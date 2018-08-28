@@ -1,9 +1,8 @@
-<div class="col-md-12 panel-info">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">عرض كل بيانات المرضى</div>
-    <div class="panel-options"></div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">عرض كل بيانات المرضى</h3>
   </div>
-  <div class="content-box-large box-with-header">
+  <div class="box-body">
 
     <%= link_to 'إضافة حالة جديدة', new_patient_path, class: 'btn btn-primary' %>
     <br>
@@ -23,7 +22,9 @@
           <% @patients.each do |patient| %>
             <tr>
               <td><%= patient.code %></td>
-              <td><%= link_to patient.name, patient %> <span class="badge"><%= patient.visits.size %> زيارة</span></td>
+              <td><%= link_to patient.name, patient %>
+                <span class="badge"><%= patient.visits.size %>
+                  زيارة</span></td>
               <td><%= time_ago_in_words patient.birthdate unless patient.birthdate.nil? %></td>
               <td><%= patient.region&.name %></td>
               <td><%= link_to 'تعديل', edit_patient_path(patient) %>
@@ -35,7 +36,8 @@
       </table>
     </div>
 
-    <br>
+  </div>
+  <div class="box-footer">
     <%= link_to 'إضافة حالة جديدة', new_patient_path, class: 'btn btn-primary' %>
   </div>
 </div>

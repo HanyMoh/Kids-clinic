@@ -1,9 +1,8 @@
-<div class="col-md-12 panel-info">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">عرض التشخيصات</div>
-    <div class="panel-options"></div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">عرض التشخيصات</h3>
   </div>
-  <div class="content-box-large box-with-header">
+  <div class="box-body">
 
     <%= link_to 'إضافة تشخيص جدبد', new_diagnosis_path, class: 'btn btn-primary' %>
     <br>
@@ -30,8 +29,7 @@
       </table>
 
     </div>
-    <br>
-
-    <%= link_to 'إضافة تشخيص جدبد', new_diagnosis_path, class: 'btn btn-primary' %>
+    <div class="box-footer">
+      <%= link_to 'إضافة تشخيص جدبد', new_diagnosis_path, class: 'btn btn-primary' %>
+    </div>
   </div>
-</div>

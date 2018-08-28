@@ -1,8 +1,11 @@
-<h1>بيانات المستخدمين</h1>
-<p>عدد العناصر المعروضة
-  <span class="badge badge-blue"><%= @users.count %></span>
-  عنصر</p>
-
+  <div class="box" dir="rtl">
+    <div class="box-header with-border">
+      <h3 class="box-title">بيانات المستخدمين</h3>
+    </div>
+    <div class="box-body">
+      <p>عدد العناصر المعروضة
+        <span class="badge badge-blue"><%= @users.count %></span>
+        عنصر</p>
 <div class="col-xs-12 table-responsive">
   <table class="table table-striped">
     <thead>
@@ -31,4 +34,10 @@
     <% end %>
   </tbody>
 </table>
+</div>
+
+
+  </div>
+  <div class="box-footer">
+  </div>
 </div>

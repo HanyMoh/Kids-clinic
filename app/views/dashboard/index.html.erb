@@ -1,25 +1,16 @@
-<div class="col-md-6 panel-info">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">الزيارات فى ها الشهر</div>
-    <div class="panel-options"></div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">الزيارات فى ها الشهر</h3>
+
   </div>
   <div class="content-box-large box-with-header">
     <%= line_chart Visit.group_by_day(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
   </div>
 </div>
-<div class="col-md-6 panel-info">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">نسبة الذكور للإناث</div>
-    <div class="panel-options"></div>
-  </div>
-  <div class="content-box-large box-with-header">
-    <%= pie_chart reports_gender_percentage_path %>
-  </div>
-</div>
 
-<div class="col-md-12 panel-warning">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">عرض حجوزات اليوم</div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">عرض حجوزات اليوم</h3>
 
     <div class="panel-options">عرض
       <%= @current_visits.size %>

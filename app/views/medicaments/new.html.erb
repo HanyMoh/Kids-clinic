@@ -1,14 +1,11 @@
-<div class="col-md-12 panel-info">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">إضافة دواء جديد</div>
-    <div class="panel-options"></div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">إضافة دواء جديد</h3>
   </div>
-  <div class="content-box-large box-with-header">
-
+  <div class="box-body">
     <%= render 'form', medicament: @medicament %>
-
-    <br/>
+  </div>
+  <div class="box-footer">
     <%= link_to 'عودة', medicaments_path, class: 'btn btn-success pull-left' %>
-
   </div>
 </div>

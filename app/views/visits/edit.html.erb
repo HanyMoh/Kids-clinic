@@ -1,15 +1,12 @@
-<div class="col-md-12 panel-info">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">تعديل بيانات الزيارة</div>
-    <div class="panel-options"></div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">تعديل بيانات الزيارة</h3>
   </div>
-  <div class="content-box-large box-with-header">
-
-<%= render 'form', visit: @visit %>
-
-<br />
-<%= link_to 'عرض', @visit, class: 'btn btn-default pull-left' %>
-<%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
-
-</div>
+  <div class="box-body">
+    <%= render 'form', visit: @visit %>
+  </div>
+  <div class="box-footer">
+    <%= link_to 'عرض', @visit, class: 'btn btn-default pull-left' %>
+    <%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
+  </div>
 </div>

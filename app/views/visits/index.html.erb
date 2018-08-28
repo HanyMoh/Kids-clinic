@@ -1,10 +1,8 @@
-<div class="col-md-12 panel-info">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">عرض كل الزيارات</div>
-    <div class="panel-options"></div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">عرض الزيارات</h3>
   </div>
-  <div class="content-box-large box-with-header">
-
+  <div class="box-body">
     <%= link_to 'إضافة زيارة جديدة', new_visit_path, class: 'btn btn-primary' %>
     <br>
     <br>
@@ -39,8 +37,9 @@
         </tbody>
       </table>
     </div>
-
-    <br>
+  </div>
+  <!-- /.box-body -->
+  <div class="box-footer">
     <%= link_to 'إضافة زيارة جديدة', new_visit_path, class: 'btn btn-primary' %>
   </div>
 </div>

@@ -1,13 +1,11 @@
-<div class="col-md-12 panel-info">
-  <div class="content-box-header  panel-heading">
-    <div class="panel-title">تعديل بيان التشخيص</div>
-    <div class="panel-options"></div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">تعديل التشخيص</h3>
   </div>
-  <div class="content-box-large box-with-header">
-
+  <div class="box-body">
     <%= render 'form', diagnosis: @diagnosis %>
-
-    <br/>
+  </div>
+  <div class="box-footer">
     <%= link_to 'عودة', diagnoses_path, class: 'btn btn-success pull-left' %>
   </div>
 </div>

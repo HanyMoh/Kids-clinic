@@ -1,72 +1,76 @@
-<div class="page-header">
-  <h1>
-    <small>عرض</small>
-    زيارة</h1>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">عرض زيارة</h3>
+  </div>
+  <div class="box-body">
+    <p>
+      <strong>التاريخ</strong>
+      <%= @visit.visit_date %>
+    </p>
+    <p>
+      <strong>رقم الكشف:</strong>
+      <%= @visit.code %>
+    </p>
+
+    <p>
+      <strong>الدور</strong>
+      <%= @visit.turn_num %>
+    </p>
+
+    <p>
+      <strong>اسم الحالة:</strong>
+      <%= @visit.patient&.name %>
+    </p>
+    <p>
+      <strong>تاريخ الميلاد:</strong>
+      <%= @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %>
+      <br>
+      <%= time_ago_in_words @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %>
+    </p>
+
+    <p>
+      <strong>المنطقة:</strong>
+      <%= @visit&.patient&.region&.name %>
+    </p>
+    <p>
+      <strong>نوع الكشف:</strong>
+      <%= @visit.visit_type&.name %>
+    </p>
+
+    <p>
+      <strong>التشخيص:</strong>
+      <ul>
+        <% @visit.visit_diagnoses.each do |a| %>
+          <li>
+            <%= a&.diagnosis&.name %>
+          </li>
+        <% end %>
+      </ul>
+
+    </p>
+    <p>
+      <strong>العلاج:</strong>
+      <ul>
+        <% @visit.visit_medicaments.each do |a| %>
+          <li>
+            <%= a&.medicament&.name %>
+          </li>
+        <% end %>
+      </ul>
+    </p>
+
+    <p>
+      <strong>ملاحظات:</strong>
+      <%= @visit.note %>
+    </p>
+    <p>
+      <strong>المستخدم:</strong>
+      <%= @visit&.user&.email %>
+    </p>
+
+  </div>
+  <div class="box-footer">
+    <%= link_to 'تعديل', edit_visit_path(@visit), class: 'btn btn-success pull-left' %>
+    <%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
+  </div>
 </div>
-
-<p>
-  <strong>التاريخ</strong>
-  <%= @visit.visit_date %>
-</p>
-<p>
-  <strong>رقم الكشف:</strong>
-  <%= @visit.code %>
-</p>
-
-<p><strong>الدور</strong>
-  <%= @visit.turn_num %>
-</p>
-
-<p>
-  <strong>اسم الحالة:</strong>
-  <%= @visit.patient&.name %>
-</p>
-<p>
-  <strong>تاريخ الميلاد:</strong>
-  <%= @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %> <br>
-  <%= time_ago_in_words @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %>
-</p>
-
-<p>
-  <strong>المنطقة:</strong>
-  <%= @visit&.patient&.region&.name %>
-</p>
-<p>
-  <strong>نوع الكشف:</strong>
-  <%= @visit.visit_type&.name %>
-</p>
-
-<p>
-  <strong>التشخيص:</strong>
-  <ul>
-      <% @visit.visit_diagnoses.each do |a| %>
-        <li>
-          <%= a&.diagnosis&.name %>
-        </li>
-      <% end %>
-    </ul>
-
-
-</p>
-<p>
-  <strong>العلاج:</strong>
-  <ul>
-      <% @visit.visit_medicaments.each do |a| %>
-        <li>
-          <%= a&.medicament&.name %>
-        </li>
-      <% end %>
-    </ul>
-</p>
-
-<p>
-  <strong>ملاحظات:</strong>
-  <%= @visit.note %>
-</p>
-<p>
-  <strong>المستخدم:</strong>
-  <%= @visit&.user&.email %>
-</p>
-
-<%= link_to 'تعديل', edit_visit_path(@visit), class: 'btn btn-success pull-left' %>
-<%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
