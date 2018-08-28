@@ -64,6 +64,19 @@ body {
   margin-left: 230px;
   z-index: 820;
 }
+.footer a{
+  color: #fff;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #3c8dbc;
+   color: white;
+   text-align: center;
+   height: 25px;
+}
 .layout-top-nav .content-wrapper,
 .layout-top-nav .right-side,
 .layout-top-nav .main-footer {
