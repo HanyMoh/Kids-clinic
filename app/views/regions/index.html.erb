@@ -3,7 +3,6 @@
     <h3 class="box-title">عرض المناطق</h3>
   </div>
   <div class="box-body">
-
     <%= link_to 'إضافة منطقة جدبدة', new_region_path, class: 'btn btn-primary' %>
     <br>
     <br>
@@ -20,17 +19,16 @@
           <% @regions.each do |region| %>
             <tr>
               <td><%= region.name %></td>
-              <td><%= link_to 'تعديل', edit_region_path(region) %>
+              <td>
+                <%= link_to 'تعديل', edit_region_path(region) %>
                 |
-                <%= link_to 'حذف', region, method: :delete, data: { confirm: 'هل أنت متأكد؟' } %></td>
+                <%= link_to 'حذف', region, method: :delete, data: { confirm: 'هل أنت متأكد؟' } %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
     </div>
-
-    <%= render 'form', region: @region %>
   </div>
   <div class="box-footer">
     <%= link_to 'إضافة منطقة جدبدة', new_region_path, class: 'btn btn-primary' %>

@@ -14,11 +14,6 @@ class Ability
     elsif !user.is_admin && user.is_active
       can :read,   :patient
       can :create, :patient
-      can :update, :patient
-
-      can :read,   :visit
-      can :create, :visit
-      # can :update, :visit
 
       can :read,   :visit_type
       can :create, :visit_type

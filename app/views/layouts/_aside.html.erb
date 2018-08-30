@@ -1,130 +1,128 @@
-<!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
-  <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <ul class="sidebar-menu">
-      <!-- <li class="header">MAIN NAVIGATION</li> -->
       <li class="active treeview">
         <%= link_to root_path do %>
-        <i class="glyphicon glyphicon-home"></i>
-        الرئيسية
-      <% end %>
-    </li>
-    <li class="treeview">
-      <a href="#">
-        <i class="fa fa-files-o"></i>
-        <span>الزيارات</span>
-        <span class="pull-right-container">
-          <span class="label label-primary pull-right"><%= Visit.current_visits(Date.current).size %></span>
-        </span>
-      </a>
-      <ul class="treeview-menu">
-        <li>
-          <%= link_to new_visit_path do %>
-          <i class="fa fa-circle-o"></i>
-          إضافة زيارة جديدة
+          <i class="glyphicon glyphicon-home"></i>
+          الرئيسية
         <% end %>
       </li>
-      <li>
-        <%= link_to visits_path do %>
-        <i class="fa fa-circle-o"></i>
-        عرض الزيارات
-      <% end %>
-    </li>
-    <li>
-      <%= link_to reports_index_path do %>
-      <i class="fa fa-circle-o"></i>
-      تقارير الزيارات
-    <% end %>
-  </li>
-</ul>
-</li>
-<li class="treeview">
-<a href="#">
-  <i class="fa fa-edit"></i>
-  <span>الحالات</span>
-  <span class="pull-right-container">
-    <i class="fa fa-angle-left pull-right"></i>
-  </span>
-</a>
-<ul class="treeview-menu">
-  <li>
-    <%= link_to patients_path do %>
-    <i class="fa fa-circle-o"></i>
-    عرض الحالات
-  <% end %>
-</li>
-<li>
-  <%= link_to new_patient_path do %>
-  <i class="fa fa-circle-o"></i>
-  إضافة حالة جديدة
-<% end %>
-</li>
-<li>
-<%= link_to reports_index_path do %>
-<i class="fa fa-circle-o"></i>
-تقارير الحالات
-<% end %>
-</li>
-</ul>
-
-</li>
-
-<li class="treeview">
-<a href="#">
-<i class="glyphicon glyphicon-stats"></i>
-<span>التقارير</span>
-<span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
-</a>
-<ul class="treeview-menu">
-  <li>
-    <%= link_to reports_index_path do %>
-      <i class="fa fa-circle-o"></i>
-      عرض التقارير
-    <% end %>
-  </li>
-</ul>
-</li>
-<li class="treeview">
-<a href="#">
-<i class="fa fa-table"></i>
-<span>الاعدادات</span>
-<span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
-</a>
-<ul class="treeview-menu">
-<li>
-<%= link_to diagnoses_path do %>
-<i class="fa fa-circle-o"></i>
-إضافة التشخيصات
-<% end %>
-</li>
-<li>
-<%= link_to medicaments_path do %>
-<i class="fa fa-circle-o"></i>
-إضافة الأدوية
-<% end %>
-</li>
-<li>
-<%= link_to regions_path do %>
-<i class="fa fa-circle-o"></i>
-إضافة المناطق
-<% end %>
-</li>
-<li>
-<%= link_to visit_types_path do %>
-<i class="fa fa-circle-o"></i>
-إضافة نوع الكشف
-<% end %>
-</li>
-<li>
-<%= link_to users_index_path do %>
-<i class="fa fa-circle-o"></i>
-إضافة المستخدمين
-<% end %>
-</li>
-
-</ul></li> </ul></section><!-- /.sidebar --></aside>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-files-o"></i>
+          <span>الزيارات</span>
+          <span class="pull-right-container">
+            <span class="label label-primary pull-right"><%= Visit.current_visits(Date.current).size %></span>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <%= link_to new_visit_path do %>
+              <i class="fa fa-circle-o"></i>
+              إضافة زيارة جديدة
+            <% end %>
+          </li>
+          <li>
+            <%= link_to visits_path do %>
+              <i class="fa fa-circle-o"></i>
+              عرض الزيارات
+            <% end %>
+          </li>
+          <li>
+            <%= link_to reports_index_path do %>
+              <i class="fa fa-circle-o"></i>
+              تقارير الزيارات
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-edit"></i>
+          <span>الحالات</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <%= link_to patients_path do %>
+              <i class="fa fa-circle-o"></i>
+              عرض الحالات
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_patient_path do %>
+              <i class="fa fa-circle-o"></i>
+              إضافة حالة جديدة
+            <% end %>
+          </li>
+          <li>
+            <%= link_to reports_index_path do %>
+              <i class="fa fa-circle-o"></i>
+              تقارير الحالات
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="glyphicon glyphicon-stats"></i>
+          <span>التقارير</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <%= link_to reports_index_path do %>
+              <i class="fa fa-circle-o"></i>
+              عرض التقارير
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-table"></i>
+          <span>الاعدادات</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <%= link_to diagnoses_path do %>
+              <i class="fa fa-circle-o"></i>
+              إضافة التشخيصات
+            <% end %>
+          </li>
+          <li>
+            <%= link_to medicaments_path do %>
+              <i class="fa fa-circle-o"></i>
+              إضافة الأدوية
+            <% end %>
+          </li>
+          <li>
+            <%= link_to regions_path do %>
+              <i class="fa fa-circle-o"></i>
+              إضافة المناطق
+            <% end %>
+          </li>
+          <li>
+            <%= link_to visit_types_path do %>
+              <i class="fa fa-circle-o"></i>
+              إضافة نوع الكشف
+            <% end %>
+          </li>
+          <li>
+            <%= link_to users_index_path do %>
+              <i class="fa fa-circle-o"></i>
+              إضافة المستخدمين
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</aside>
