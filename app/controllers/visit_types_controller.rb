@@ -4,12 +4,13 @@ class VisitTypesController < ApplicationController
 
   # GET /visit_types
   def index
+    authorize! :read, VisitType
     @visit_types = VisitType.all
   end
 
   # GET /visit_types/new
   def new
-    authorize! :create, @visit_type
+    authorize! :create, VisitType
     @visit_type = VisitType.new
   end
 

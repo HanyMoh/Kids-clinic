@@ -5,6 +5,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
+    authorize! :read, Patient
     page_size = params[:page_size]
     @q =  Patient.ransack(params[:q])
     @q.sorts = 'created_at DESC' if @q.sorts.empty?
@@ -20,19 +21,19 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.json
   def show
-    authorize! :read, @patient
+    authorize! :read, Patient
   end
 
   # GET /patients/new
   def new
-    authorize! :create, @patient
+    authorize! :create, Patient
     @patient = Patient.new
     @patient.code = Patient.max_code
   end
 
   # GET /patients/1/edit
   def edit
-    authorize! :update, @patient
+    authorize! :update, Patient
   end
 
   # POST /patients
@@ -62,7 +63,7 @@ class PatientsController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.json
   def destroy
-    authorize! :destroy, @patient
+    authorize! :destroy, Patient
     @patient.destroy
     respond_to do |format|
       format.html { redirect_to patients_url, notice: 'Patient was successfully destroyed.' }

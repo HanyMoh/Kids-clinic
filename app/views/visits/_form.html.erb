@@ -36,7 +36,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <%= form.label :patient_id,"الحالة" %>
-          <%= form.select(:patient_id, options_for_select(patients_select, visit.patient_id), {include_blank: true}, {class: 'form-control select2'}) %>
+          <%= form.select(:patient_id, options_for_select(patients_select, visit.patient_id), {include_blank: true}, {class: 'form-control'}) %>
         </div>
       </div>
       <div class="col-md-6">

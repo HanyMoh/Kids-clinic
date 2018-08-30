@@ -4,6 +4,7 @@ class VisitsController < ApplicationController
 
   # GET /visits
   def index
+    authorize! :read, Visit
     page_size = params[:page_size]
     @q =  Visit.ransack(params[:q])
     @q.sorts = 'created_at DESC' if @q.sorts.empty?
@@ -18,12 +19,12 @@ class VisitsController < ApplicationController
 
   # GET /visits/1
   def show
-    authorize! :read, @visit
+    authorize! :read, Visit
   end
 
   # GET /visits/new
   def new
-    authorize! :create, @visit
+    authorize! :create, Visit
     @visit = Visit.new
     @visit.code = Visit.max_code
     @visit.turn_num = Visit.current_turn Date.current
@@ -34,7 +35,7 @@ class VisitsController < ApplicationController
 
   # GET /visits/1/edit
   def edit
-    authorize! :update, @visit
+    authorize! :update, Visit
   end
 
   # POST /visits
@@ -66,7 +67,7 @@ class VisitsController < ApplicationController
   # DELETE /visits/1
   # DELETE /visits/1.json
   def destroy
-    authorize! :destroy, @visit
+    authorize! :destroy, Visit
     @visit.destroy
     respond_to do |format|
       format.html { redirect_to visits_url, notice: 'Visit was successfully destroyed.' }

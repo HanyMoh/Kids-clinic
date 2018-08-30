@@ -1,4 +1,4 @@
 <% medicaments_select = get_medicaments_select %>
 <div class="form-group">
-    <%= f.select(:medicament_id, options_for_select(medicaments_select, @visit.visit_medicaments.first.medicament_id), {include_blank: true}, {class: 'form-control select2'}) %>
+    <%= f.select(:medicament_id, options_for_select(medicaments_select, @visit.visit_medicaments.first.medicament_id), {include_blank: true}, {class: 'form-control'}) %>
 </div>

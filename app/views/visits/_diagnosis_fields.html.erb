@@ -1,5 +1,5 @@
 <% diagnoses_select = get_diagnoses_select %>
 <div class="form-group">
   <%= f.label :diagnosis_id,"التشخيص" %>
-  <%= f.select(:diagnosis_id, options_for_select(diagnoses_select, @visit.diagnosis_id), {include_blank: true}, {class: 'form-control select2'}) %>
+  <%= f.select(:diagnosis_id, options_for_select(diagnoses_select, @visit.diagnosis_id), {include_blank: true}, {class: 'form-control'}) %>
 </div>

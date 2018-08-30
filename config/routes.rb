@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/edit'
   get 'users/update'
+  get 'dashboard/new'
   namespace :reports do
     get "index"
     get "kids_by_region"

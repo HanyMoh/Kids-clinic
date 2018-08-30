@@ -4,19 +4,20 @@ class RegionsController < ApplicationController
 
   # GET /regions
   def index
+    authorize! :read, Region
     @regions = Region.order('created_at desc')
   end
 
 
   # GET /regions/new
   def new
-    authorize! :create, @region
+    authorize! :create, Region
     @region = Region.new
   end
 
   # GET /regions/1/edit
   def edit
-    authorize! :update, @region
+    authorize! :update, Region
   end
 
   # POST /regions
@@ -45,7 +46,7 @@ class RegionsController < ApplicationController
 
   # DELETE /regions/1
   def destroy
-    authorize! :destroy, @region
+    authorize! :destroy, Region
     @region.destroy
     respond_to do |format|
       format.html { redirect_to regions_url, notice: 'Region was successfully destroyed.' }

@@ -28,12 +28,14 @@
               عرض الزيارات
             <% end %>
           </li>
+          <% if can? :create, User %>
           <li>
             <%= link_to reports_index_path do %>
               <i class="fa fa-circle-o"></i>
               تقارير الزيارات
             <% end %>
           </li>
+          <% end %>
         </ul>
       </li>
       <li class="treeview">
@@ -57,14 +59,17 @@
               إضافة حالة جديدة
             <% end %>
           </li>
+          <% if can? :create, User %>
           <li>
             <%= link_to reports_index_path do %>
               <i class="fa fa-circle-o"></i>
               تقارير الحالات
             <% end %>
           </li>
+          <% end %>
         </ul>
       </li>
+      <% if can? :create, User %>
       <li class="treeview">
         <a href="#">
           <i class="glyphicon glyphicon-stats"></i>
@@ -82,6 +87,7 @@
           </li>
         </ul>
       </li>
+      <% end %>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-table"></i>
@@ -91,6 +97,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
+          <% if can? :create, User %>
           <li>
             <%= link_to diagnoses_path do %>
               <i class="fa fa-circle-o"></i>
@@ -103,6 +110,7 @@
               إضافة الأدوية
             <% end %>
           </li>
+          <% end %>
           <li>
             <%= link_to regions_path do %>
               <i class="fa fa-circle-o"></i>
@@ -115,12 +123,14 @@
               إضافة نوع الكشف
             <% end %>
           </li>
+          <% if can? :create, User %>
           <li>
             <%= link_to users_index_path do %>
               <i class="fa fa-circle-o"></i>
               إضافة المستخدمين
             <% end %>
           </li>
+          <% end %>
         </ul>
       </li>
     </ul>
