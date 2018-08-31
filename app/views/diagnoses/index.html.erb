@@ -3,33 +3,44 @@
     <h3 class="box-title">عرض التشخيصات</h3>
   </div>
   <div class="box-body">
-
-    <%= link_to 'إضافة تشخيص جدبد', new_diagnosis_path, class: 'btn btn-primary' %>
-    <br>
-    <br>
+    <% if can? :create, Diagnosis %>
+      <%= link_to 'إضافة تشخيص جدبد', new_diagnosis_path, class: 'btn btn-primary' %>
+      <br><br>
+    <% end %>
     <div class="col-xs-12 table-responsive">
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
             <th class="text-center">اسم التشخيص</th>
-            <th></th>
           </tr>
         </thead>
 
         <tbody>
           <% @diagnoses.each do |diagnosis| %>
             <tr>
-              <td><%= diagnosis.name %></td>
-              <td><%= link_to 'تعديل', edit_diagnosis_path(diagnosis) %>
-                |
-                <%= link_to 'حذف', diagnosis, method: :delete, data: { confirm: 'هل أنت متأكد؟' } %></td>
+              <td>
+                <div class="btn-group">
+                  <% if can? :update, Diagnosis %>
+                    <%= link_to edit_diagnosis_path(diagnosis), title: 'تعديل', class: "btn btn-warning btn-xs" do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+
+                  <% if can? :destroy, Diagnosis %>
+                    <%= link_to diagnosis, method: :delete, data: { confirm: 'Are you sure?' }, title: 'حذف', class: "btn btn-danger btn-xs" do %>
+                      <i class="fa fa-trash-o"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <%= diagnosis.name %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
 
     </div>
-    <div class="box-footer">
+    <% if can? :create, Diagnosis %>
       <%= link_to 'إضافة تشخيص جدبد', new_diagnosis_path, class: 'btn btn-primary' %>
-    </div>
+    <% end %>
   </div>

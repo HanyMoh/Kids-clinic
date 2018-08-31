@@ -1,22 +1,22 @@
 class DiagnosesController < ApplicationController
-  before_action :set_diagnosis, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_region, only: [:edit, :update, :destroy]
 
   # GET /diagnoses
   def index
-    @diagnoses = Diagnosis.all
-  end
-
-  # GET /diagnoses/1
-  def show
+    authorize! :read, Diagnosis
+    @diagnoses = Diagnosis.order('created_at desc')
   end
 
   # GET /diagnoses/new
   def new
+    authorize! :create, Diagnosis
     @diagnosis = Diagnosis.new
   end
 
   # GET /diagnoses/1/edit
   def edit
+    authorize! :update, Diagnosis
   end
 
   # POST /diagnoses
@@ -45,6 +45,7 @@ class DiagnosesController < ApplicationController
 
   # DELETE /diagnoses/1
   def destroy
+    authorize! :destroy, Diagnosis
     @diagnosis.destroy
     respond_to do |format|
       format.html { redirect_to diagnoses_url, notice: 'Diagnosis was successfully destroyed.' }

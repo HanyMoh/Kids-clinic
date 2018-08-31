@@ -1,18 +1,22 @@
 class MedicamentsController < ApplicationController
-  before_action :set_medicament, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_region, only: [:edit, :update, :destroy]
 
   # GET /medicaments
   def index
-    @medicaments = Medicament.all
+    authorize! :read, Medicament
+    @medicaments = Medicament.order('created_at desc')
   end
 
   # GET /medicaments/new
   def new
+    authorize! :create, Medicament
     @medicament = Medicament.new
   end
 
   # GET /medicaments/1/edit
   def edit
+    authorize! :update, Medicament
   end
 
   # POST /medicaments
@@ -41,6 +45,7 @@ class MedicamentsController < ApplicationController
 
   # DELETE /medicaments/1
   def destroy
+    authorize! :destroy, Medicament
     @medicament.destroy
     respond_to do |format|
       format.html { redirect_to medicaments_url, notice: 'Medicament was successfully destroyed.' }
