@@ -15,6 +15,7 @@ class DashboardController < ApplicationController
         redirect_to dashboard_new_url, notice: 'معذرة .. حسابك غير نشط, تابع مع الإدارة'
       else
         @current_visits = Visit.current_visits Date.current
+        @patients = Patient.where(created_at: Time.current.beginning_of_day..Time.current.end_of_day)
       end
     else
       redirect_to dashboard_new_url
