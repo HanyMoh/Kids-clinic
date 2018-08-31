@@ -46,6 +46,7 @@
         </div>
       </div>
       <div class="clearfix"></div>
+      <% if can? :destroy, Visit %>
       <div class="col-md-6" id="diagnoses">
         <h5>إضافة تشخيص جديد</h5>
         <%= form.fields_for :visit_diagnoses do |f| %>
@@ -65,6 +66,8 @@
     </div>
   </div>
   <div class="clearfix"></div>
+  <% end %>
+
   <div class="col-md-12">
     <div class="form-group">
       <%= form.label :note,"ملاحظات" %>

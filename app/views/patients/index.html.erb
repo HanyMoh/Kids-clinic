@@ -15,21 +15,35 @@
             <th class="text-center">الاسم</th>
             <th class="text-center">العمر</th>
             <th class="text-center">المنطقة</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           <% @patients.each do |patient| %>
             <tr>
-              <td><%= patient.code %></td>
-              <td><%= link_to patient.name, patient %>
-                <span class="badge"><%= patient.visits.size %>
-                  زيارة</span></td>
+              <td>
+                <div class="btn-group">
+                  <% if can? :update, Patient %>
+                    <%= link_to edit_patient_path(patient), title: 'تعديل', class: "btn btn-warning btn-xs" do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+
+                  <% if can? :destroy, Patient %>
+                    <%= link_to patient, method: :delete, data: { confirm: 'هل انت متاكد؟' }, title: 'حذف', class: "btn btn-danger btn-xs" do %>
+                      <i class="fa fa-trash-o"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <%= patient.code %>
+              </td>
+              <td>
+                <%= link_to patient.name, patient %>
+                <% if can? :destroy, Patient %>
+                  <span class="badge"><%= patient.visits.size %> زيارة</span>
+                <% end %>
+              </td>
               <td><%= time_ago_in_words patient.birthdate unless patient.birthdate.nil? %></td>
               <td><%= patient.region&.name %></td>
-              <td><%= link_to 'تعديل', edit_patient_path(patient) %>
-                |
-                <%= link_to 'حذف', patient, method: :delete, data: { confirm: 'هل انت متاكد؟' } %></td>
             </tr>
           <% end %>
         </tbody>

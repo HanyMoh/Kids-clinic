@@ -36,7 +36,7 @@
       <strong>نوع الكشف:</strong>
       <%= @visit.visit_type&.name %>
     </p>
-
+<% if can? :destroy, Visit %>
     <p>
       <strong>التشخيص:</strong>
       <ul>
@@ -58,6 +58,7 @@
         <% end %>
       </ul>
     </p>
+    <% end %>
 
     <p>
       <strong>ملاحظات:</strong>
