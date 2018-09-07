@@ -12,24 +12,27 @@
 
 ActiveRecord::Schema.define(version: 20180822144208) do
 
-  create_table "diagnoses", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "diagnoses", id: :bigint, default: nil, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "medicaments", force: :cascade do |t|
+  create_table "medicaments", id: :bigint, default: nil, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "patients", force: :cascade do |t|
+  create_table "patients", id: :bigint, default: nil, force: :cascade do |t|
     t.integer "code"
     t.string "name"
     t.string "phone"
     t.date "birthdate"
-    t.integer "region_id"
+    t.bigint "region_id"
     t.string "address"
     t.text "note"
     t.datetime "created_at", null: false
@@ -38,13 +41,13 @@ ActiveRecord::Schema.define(version: 20180822144208) do
     t.index ["region_id"], name: "index_patients_on_region_id"
   end
 
-  create_table "regions", force: :cascade do |t|
+  create_table "regions", id: :bigint, default: nil, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :bigint, default: nil, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -63,38 +66,38 @@ ActiveRecord::Schema.define(version: 20180822144208) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "visit_diagnoses", force: :cascade do |t|
-    t.integer "visit_id"
-    t.integer "diagnosis_id"
+  create_table "visit_diagnoses", id: :bigint, default: nil, force: :cascade do |t|
+    t.bigint "visit_id"
+    t.bigint "diagnosis_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["diagnosis_id"], name: "index_visit_diagnoses_on_diagnosis_id"
     t.index ["visit_id"], name: "index_visit_diagnoses_on_visit_id"
   end
 
-  create_table "visit_medicaments", force: :cascade do |t|
-    t.integer "visit_id"
-    t.integer "medicament_id"
+  create_table "visit_medicaments", id: :bigint, default: nil, force: :cascade do |t|
+    t.bigint "visit_id"
+    t.bigint "medicament_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["medicament_id"], name: "index_visit_medicaments_on_medicament_id"
     t.index ["visit_id"], name: "index_visit_medicaments_on_visit_id"
   end
 
-  create_table "visit_types", force: :cascade do |t|
+  create_table "visit_types", id: :bigint, default: nil, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "visits", force: :cascade do |t|
+  create_table "visits", id: :bigint, default: nil, force: :cascade do |t|
     t.date "visit_date"
-    t.integer "patient_id"
-    t.integer "visit_type_id"
+    t.bigint "patient_id"
+    t.bigint "visit_type_id"
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "code"
     t.integer "turn_num"
     t.index ["patient_id"], name: "index_visits_on_patient_id"
@@ -102,4 +105,8 @@ ActiveRecord::Schema.define(version: 20180822144208) do
     t.index ["visit_type_id"], name: "index_visits_on_visit_type_id"
   end
 
+  add_foreign_key "patients", "regions"
+  add_foreign_key "visits", "patients"
+  add_foreign_key "visits", "users"
+  add_foreign_key "visits", "visit_types"
 end

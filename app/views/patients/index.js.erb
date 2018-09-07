@@ -1,0 +1,3 @@
+$('.table_body_data').append("<%= escape_javascript(render partial: "partial_body_data", collection: @patients, as: :patient) %>");
+$('#paginator').html("<%= escape_javascript(link_to_next_page @patients, t('text.load_more'), remote: true, id: 'load_more', class: 'btn btn-default') %>");
+if (!$('#load_more').length) { $('#paginator').remove(); }

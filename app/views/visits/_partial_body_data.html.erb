@@ -1,0 +1,23 @@
+<tr>
+  <td>
+    <div class="btn-group">
+      <% if can? :update, Visit %>
+          <%= link_to edit_visit_path(visit), title: 'تعديل', class: "btn btn-warning btn-xs" do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+      <% end %>
+
+      <% if can? :destroy, Visit %>
+        <%= link_to visit, method: :delete, data: { confirm: 'هل أنت متأكد؟' }, title: 'حذف', class: "btn btn-danger btn-xs" do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <%= link_to "N#{visit.code}", visit %>
+  </td>
+  <td><%= visit.visit_date %></td>
+  <td><%= link_to visit.patient&.name, visit.patient %></td>
+  <td><%= visit.visit_type&.name %></td>
+  <td><%= visit.turn_num %></td>
+  <td><%= visit.user&.email %></td>
+</tr>

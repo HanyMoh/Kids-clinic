@@ -2,7 +2,7 @@
 #
 # Table name: patients
 #
-#  id         :integer          not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  address    :string
 #  birthdate  :date
 #  code       :integer
@@ -12,11 +12,15 @@
 #  phone      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  region_id  :integer
+#  region_id  :bigint(8)
 #
 # Indexes
 #
 #  index_patients_on_region_id  (region_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (region_id => regions.id)
 #
 
 class Patient < ApplicationRecord

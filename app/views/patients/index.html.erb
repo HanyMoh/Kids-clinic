@@ -3,7 +3,6 @@
     <h3 class="box-title">عرض كل بيانات المرضى</h3>
   </div>
   <div class="box-body">
-
     <%= link_to 'إضافة حالة جديدة', new_patient_path, class: 'btn btn-primary' %>
     <br>
     <br>
@@ -17,40 +16,17 @@
             <th class="text-center">المنطقة</th>
           </tr>
         </thead>
-        <tbody>
-          <% @patients.each do |patient| %>
-            <tr>
-              <td>
-                <div class="btn-group">
-                  <% if can? :update, Patient %>
-                    <%= link_to edit_patient_path(patient), title: 'تعديل', class: "btn btn-warning btn-xs" do %>
-                      <i class="fa fa-pencil"></i>
-                    <% end %>
-                  <% end %>
-
-                  <% if can? :destroy, Patient %>
-                    <%= link_to patient, method: :delete, data: { confirm: 'هل انت متاكد؟' }, title: 'حذف', class: "btn btn-danger btn-xs" do %>
-                      <i class="fa fa-trash-o"></i>
-                    <% end %>
-                  <% end %>
-                </div>
-                <%= patient.code %>
-              </td>
-              <td>
-                <%= link_to patient.name, patient %>
-                <% if can? :destroy, Patient %>
-                  <span class="badge"><%= patient.visits.size %> زيارة</span>
-                <% end %>
-              </td>
-              <td><%= time_ago_in_words patient.birthdate unless patient.birthdate.nil? %></td>
-              <td><%= patient.region&.name %></td>
-            </tr>
-          <% end %>
+        <tbody class="table_body_data">
+          <%= render partial: 'partial_body_data', collection: @patients, as: :patient %>
         </tbody>
       </table>
     </div>
 
+    <div class="text-center" id="paginator">
+      <%= link_to_next_page @patients, t('text.load_more'), remote: true, id: 'load_more', class: 'btn btn-default' %>
+    </div>
   </div>
+
   <div class="box-footer">
     <%= link_to 'إضافة حالة جديدة', new_patient_path, class: 'btn btn-primary' %>
   </div>

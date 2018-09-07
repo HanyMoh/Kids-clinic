@@ -2,11 +2,11 @@
 #
 # Table name: visit_diagnoses
 #
-#  id           :integer          not null, primary key
+#  id           :bigint(8)        not null, primary key
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  diagnosis_id :integer
-#  visit_id     :integer
+#  diagnosis_id :bigint(8)
+#  visit_id     :bigint(8)
 #
 # Indexes
 #

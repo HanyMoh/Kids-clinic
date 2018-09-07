@@ -2,22 +2,28 @@
 #
 # Table name: visits
 #
-#  id            :integer          not null, primary key
+#  id            :bigint(8)        not null, primary key
 #  code          :integer
 #  note          :text
 #  turn_num      :integer
 #  visit_date    :date
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  patient_id    :integer
-#  user_id       :integer
-#  visit_type_id :integer
+#  patient_id    :bigint(8)
+#  user_id       :bigint(8)
+#  visit_type_id :bigint(8)
 #
 # Indexes
 #
 #  index_visits_on_patient_id     (patient_id)
 #  index_visits_on_user_id        (user_id)
 #  index_visits_on_visit_type_id  (visit_type_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (patient_id => patients.id)
+#  fk_rails_...  (user_id => users.id)
+#  fk_rails_...  (visit_type_id => visit_types.id)
 #
 
 class Visit < ApplicationRecord
