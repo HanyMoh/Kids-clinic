@@ -36,6 +36,10 @@ class Visit < ApplicationRecord
   accepts_nested_attributes_for :visit_diagnoses
   accepts_nested_attributes_for :visit_medicaments
 
+  ransacker :created_at, type: :date do
+    Arel.sql('date(created_at)')
+  end
+
   scope :max_code, lambda { maximum('code').to_i + 1 }
   scope :current_turn, lambda { |visit_date|
     Visit.where(visit_date: visit_date).maximum('turn_num').to_i + 1

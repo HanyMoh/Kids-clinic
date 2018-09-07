@@ -27,6 +27,10 @@ class Patient < ApplicationRecord
   has_many :visits, dependent: :destroy
   belongs_to :region, optional: true
 
+  ransacker :created_at, type: :date do
+    Arel.sql('date(created_at)')
+  end
+
   validates :name, presence: true, length: { within: 2..40 }, uniqueness: true
 
   scope :max_code, lambda { maximum(:code).to_i + 1 }
