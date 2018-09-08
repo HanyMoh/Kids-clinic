@@ -6,9 +6,9 @@ class VisitsController < ApplicationController
   def index
     authorize! :read, Visit
     page_size = params[:page_size]
-    @q =  Visit.ransack(params[:q])
-    @q.sorts = 'created_at DESC' if @q.sorts.empty?
-    @visits = @q.result
+    @q =  Visit.includes(:patient,:visit_type).ransack(params[:q])
+    @q.sorts = 'visits.created_at DESC' if @q.sorts.empty?
+    @visits = @q.result.order('visits.created_at DESC')
     @visits = @visits.page(params[:page])
     @visits = @visits.per(page_size) unless page_size&.empty?
     respond_to do |format|

@@ -9,7 +9,13 @@
   </div>
   <div class="box-body" dir="rtl">
     <%= search_form_for @q do |f| %>
-    <div class="col-sm-4">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.label :phone, "الهاتف" %>
+        <%= f.text_field :phone_cont, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-2">
       <div class="form-group">
         <%= f.label :name, "اسم الحالة" %>
         <%= f.text_field :name_cont, class: 'form-control' %>

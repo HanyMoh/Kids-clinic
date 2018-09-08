@@ -1,0 +1,48 @@
+<div class="box box-warning">
+  <div class="box-header with-border">
+    <h3 class="box-title"></h3>
+    <div class="box-tools">
+      <button type="button" class="btn btn-box-tool" data-widget="collapse">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="box-body" dir="rtl">
+    <%= search_form_for @q do |f| %>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.label :name, "الهاتف" %>
+        <%= f.text_field :patient_phone_cont, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= f.label :name, "اسم الحالة" %>
+        <%= f.text_field :patient_name_cont, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.label :visit_type_id, "نوع الزيارة" %>
+        <%= f.select :visit_type_id_eq, options_from_collection_for_select(VisitType.all, "id", "name", @q.visit_type_id_eq), {:include_blank => true}, {class: 'form-control'} %>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.label :visit_date_lteq, "التاريخ إلى" %>
+        <%= f.text_field :visit_date_lteq,class: 'datepicker form-control', autocomplete: "off" %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.label :visit_date_gteq, "التاريخ من" %>
+        <%= f.text_field :visit_date_gteq,class: 'datepicker form-control', autocomplete: "off" %>
+      </div>
+    </div>
+  </div>
+  <div class="box-footer">
+    <%= f.submit 'بحث', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>
