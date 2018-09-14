@@ -3,37 +3,79 @@
     <h3 class="box-title">عرض بيانات حالة</h3>
   </div>
   <div class="box-body">
-    <p>
-      <strong>اسم الحالة</strong>
-      <%= @patient.name %>
-    </p>
+    <div class="row">
+      <div class="col-lg-6 in-gp-tl col-sm-offset-3">
+        <dl class="dl-horizontal">
+          <fieldset dir="ltr">
+            <dt>
+              <%= Patient.human_attribute_name('code') %>
+            </dt>
+            <dd>
+              <%= @patient.code %>
+            </dd>
+            <dt>
+              <%= Patient.human_attribute_name('name') %>
+            </dt>
+            <dd>
+              <%= @patient.name %>
+            </dd>
+            <dt>
+              <%= Patient.human_attribute_name('phone') %>
+            </dt>
+            <dd>
+              <%= @patient.phone %>
+            </dd>
+            <dt>
+              <%= Patient.human_attribute_name('region') %>
+            </dt>
+            <dd>
+              <%= @patient.region&.name %>
+            </dd>
+            <dt>
+              <%= Patient.human_attribute_name('address') %>
+            </dt>
+            <dd>
+              <%= @patient.address %>
+            </dd>
+            <dt>
+              <%= Patient.human_attribute_name('gender') %>
+            </dt>
+            <dd>
+              <%= @patient.is_male ? 'Male' : 'Female' %>
+            </dd>
+            <dt>
+              <%= Patient.human_attribute_name('birthdate') %>
+            </dt>
+            <dd>
+              <%= @patient.birthdate %>
+              <br/>
+              <%= time_ago_in_words @patient.birthdate unless @patient.birthdate.nil? %>
+            </dd>
 
-    <p>
-      <strong>الهاتف:</strong>
-      <%= @patient.phone %>
-    </p>
-
-    <p>
-      <strong>تاريخ الميلاد:</strong>
-      <%= @patient.birthdate %>
-      <br>
-      <%= time_ago_in_words @patient.birthdate unless @patient.birthdate.nil? %>
-    </p>
-
-    <p>
-      <strong>المنطقة:</strong>
-      <%= @patient.region&.name %>
-    </p>
-
-    <p>
-      <strong>العنوان:</strong>
-      <%= @patient.address %>
-    </p>
-
-    <p>
-      <strong>ملاجظات:</strong>
-      <%= @patient.note %>
-    </p>
+            <dt>
+              <%= Patient.human_attribute_name('note') %>
+            </dt>
+            <dd>
+              <%= @patient.note %>
+            </dd>
+            <br/>
+            <dt>
+              <%= Patient.human_attribute_name('created_at') %>
+            </dt>
+            <dd>
+              <%= (@patient.created_at + 2.hours).strftime("%F %T") %>
+            </dd>
+            <dt>
+              <%= Patient.human_attribute_name('updated_at') %>
+            </dt>
+            <dd>
+              <%= (@patient.updated_at + 2.hours).strftime("%F %T") %>
+            </dd>
+          </fieldset>
+          <br/>
+        </dl>
+      </div>
+    </div>
 
   </div>
   <div class="box-footer">

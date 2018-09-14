@@ -3,72 +3,72 @@
     <h3 class="box-title">عرض زيارة</h3>
   </div>
   <div class="box-body">
-    <p>
-      <strong>التاريخ</strong>
-      <%= @visit.visit_date %>
-    </p>
-    <p>
-      <strong>رقم الكشف:</strong>
-      <%= @visit.code %>
-    </p>
+    <div class="row">
+      <div class="col-lg-6 in-gp-tl col-sm-offset-3">
+        <dl class="dl-horizontal">
+          <fieldset dir="ltr">
+            <dt><%= Visit.human_attribute_name('visit_date') %></dt>
+            <dd><%= @visit.visit_date %></dd>
+            <dt><%= Visit.human_attribute_name('code') %></dt>
+            <dd><%= "N#{@visit.code}" %></dd>
+            <dt><%= Visit.human_attribute_name('turn_num') %></dt>
+            <dd><%= @visit.turn_num %></dd>
+            <dt><%= Visit.human_attribute_name('patient_name') %></dt>
+            <dd><%= @visit.patient&.name %></dd>
+            <dt><%= Visit.human_attribute_name('birth_date') %></dt>
+            <dd>
+              <%= @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %>
+              <br>
+              <%= time_ago_in_words @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %>
+            </dd>
+            <dt><%= Visit.human_attribute_name('region_name') %></dt>
+            <dd><%= @visit&.patient&.region&.name %></dd>
+            <dt><%= Visit.human_attribute_name('visit_type') %></dt>
+            <dd><%= @visit.visit_type&.name %></dd>
+            <dt><%= Visit.human_attribute_name('note') %></dt>
+            <dd><%= @visit.note %></dd>
+            <dt><%= Visit.human_attribute_name('user') %></dt>
+            <dd><%= @visit&.user&.email %></dd>
 
-    <p>
-      <strong>الدور</strong>
-      <%= @visit.turn_num %>
-    </p>
 
-    <p>
-      <strong>اسم الحالة:</strong>
-      <%= @visit.patient&.name %>
-    </p>
-    <p>
-      <strong>تاريخ الميلاد:</strong>
-      <%= @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %>
-      <br>
-      <%= time_ago_in_words @visit&.patient&.birthdate unless @visit&.patient.birthdate.nil? %>
-    </p>
+            <br/>
+            <dt><%= Visit.human_attribute_name('created_at') %></dt>
+            <dd><%= (@visit.created_at + 2.hours).strftime("%F %T") %></dd>
+            <dt><%= Visit.human_attribute_name('updated_at') %></dt>
+            <dd><%= (@visit.updated_at + 2.hours).strftime("%F %T") %></dd>
+          </fieldset>
+          <br/>
+        </dl>
+      </div>
+    </div>
 
-    <p>
-      <strong>المنطقة:</strong>
-      <%= @visit&.patient&.region&.name %>
-    </p>
-    <p>
-      <strong>نوع الكشف:</strong>
-      <%= @visit.visit_type&.name %>
-    </p>
-<% if can? :destroy, Visit %>
-    <p>
-      <strong>التشخيص:</strong>
-      <ul>
-        <% @visit.visit_diagnoses.each do |a| %>
-          <li>
-            <%= a&.diagnosis&.name %>
-          </li>
-        <% end %>
-      </ul>
 
-    </p>
-    <p>
-      <strong>العلاج:</strong>
-      <ul>
-        <% @visit.visit_medicaments.each do |a| %>
-          <li>
-            <%= a&.medicament&.name %>
-          </li>
-        <% end %>
-      </ul>
-    </p>
+
+    <% if can? :destroy, Visit %>
+      <p>
+        <strong>التشخيص:</strong>
+        <ul>
+          <% @visit.visit_diagnoses.each do |a| %>
+            <li>
+              <%= a&.diagnosis&.name %>
+            </li>
+          <% end %>
+        </ul>
+
+      </p>
+      <p>
+        <strong>العلاج:</strong>
+        <ul>
+          <% @visit.visit_medicaments.each do |a| %>
+            <li>
+              <%= a&.medicament&.name %>
+            </li>
+          <% end %>
+        </ul>
+      </p>
     <% end %>
 
-    <p>
-      <strong>ملاحظات:</strong>
-      <%= @visit.note %>
-    </p>
-    <p>
-      <strong>المستخدم:</strong>
-      <%= @visit&.user&.email %>
-    </p>
-
+  
   </div>
   <div class="box-footer">
     <%= link_to 'تعديل', edit_visit_path(@visit), class: 'btn btn-success pull-left' %>
