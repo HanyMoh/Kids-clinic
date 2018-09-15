@@ -1,0 +1,51 @@
+
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">الزيارات باليوم</h3>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= line_chart Visit.group_by_day(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
+  </div>
+</div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">الزيارات بالأيام</h3>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= column_chart Visit.group_by_day_of_week(:visit_date, format: "%A").count, discrete: true %>
+  </div>
+</div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">الزيارات بالإسبوع</h3>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= column_chart Visit.group_by_week(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
+  </div>
+</div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">الزيارات بالشهر</h3>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= column_chart Visit.group_by_month(:visit_date, format: "%B").count, discrete: true %>
+  </div>
+</div>
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <h3 class="box-title">الزيارات بالسنة</h3>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= column_chart Visit.group_by_year(:visit_date, format: "%Y").count, discrete: true %>
+  </div>
+</div>
+
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <div class="box-title">الزيارات حسب نوع الزيارة</div>
+
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= column_chart reports_visits_by_visit_type_path %>
+  </div>
+</div>

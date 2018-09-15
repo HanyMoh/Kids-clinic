@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'dashboard/new'
   namespace :reports do
     get "index"
+    get "visits_reports"
     get "kids_by_region"
     get "kids_by_birthdate"
     get "gender_percentage"

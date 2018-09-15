@@ -1,6 +1,8 @@
 class ReportsController < ApplicationController
   def index
   end
+  def visits_reports
+  end
   def kids_by_region
     render json: Patient.includes(:regions).group(:region).count.map { |k, v| [k.name, v] }
   end
@@ -22,4 +24,5 @@ class ReportsController < ApplicationController
       [[k.name], v]
     }
   end
+
 end

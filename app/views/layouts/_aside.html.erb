@@ -30,7 +30,7 @@
           </li>
           <% if can? :create, User %>
           <li>
-            <%= link_to reports_index_path do %>
+            <%= link_to reports_visits_reports_path do %>
               <i class="fa fa-circle-o"></i>
               تقارير الزيارات
             <% end %>
@@ -69,8 +69,8 @@
           <% end %>
         </ul>
       </li>
-      <% if can? :create, User %>
-      <li class="treeview">
+        <!-- < % if can? :create, User %>
+     <li class="treeview">
         <a href="#">
           <i class="glyphicon glyphicon-stats"></i>
           <span>التقارير</span>
@@ -80,14 +80,14 @@
         </a>
         <ul class="treeview-menu">
           <li>
-            <%= link_to reports_index_path do %>
+            < %= link_to reports_index_path do %>
               <i class="fa fa-circle-o"></i>
               عرض التقارير
-            <% end %>
+            < % end %>
           </li>
         </ul>
       </li>
-      <% end %>
+      < % end %> -->
       <li class="treeview">
         <a href="#">
           <i class="fa fa-table"></i>
