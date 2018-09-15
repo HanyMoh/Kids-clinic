@@ -36,4 +36,18 @@ $(document).ready(function() {
     autoclose: true,
     todayHighlight: true,
   });
+
+  $('.fa-print').parent().click(function (e) {
+      e.preventDefault();
+      var element = $('.box-print');
+      var res = $('.wrapper').html();
+      element.find('.pTable-0').prepend($('.box-title').text());
+      element.find('.no-print').remove();
+      element.find('a').removeAttr('href').css('text-decoration', 'none');
+      var content = element.html();
+      $('.wrapper').html(content);
+      window.print();
+      $('.wrapper').html(res);
+      location.reload();
+  });
 });

@@ -2,7 +2,7 @@
   <div class="box-header with-border">
     <h3 class="box-title">عرض زيارة</h3>
   </div>
-  <div class="box-body">
+  <div class="box-body box-print">
     <div class="row">
       <div class="col-lg-6 in-gp-tl col-sm-offset-3">
         <dl class="dl-horizontal">
@@ -42,36 +42,40 @@
       </div>
     </div>
 
+      <!-- this row will not appear when printing -->
+    <div class="no-print">
+      <% if can? :destroy, Visit %>
+        <p>
+          <strong>التشخيص:</strong>
+          <ul>
+            <% @visit.visit_diagnoses.each do |a| %>
+              <li>
+                <%= a&.diagnosis&.name %>
+              </li>
+            <% end %>
+          </ul>
 
-
-    <% if can? :destroy, Visit %>
-      <p>
-        <strong>التشخيص:</strong>
-        <ul>
-          <% @visit.visit_diagnoses.each do |a| %>
-            <li>
-              <%= a&.diagnosis&.name %>
-            </li>
-          <% end %>
-        </ul>
-
-      </p>
-      <p>
-        <strong>العلاج:</strong>
-        <ul>
-          <% @visit.visit_medicaments.each do |a| %>
-            <li>
-              <%= a&.medicament&.name %>
-            </li>
-          <% end %>
-        </ul>
-      </p>
-    <% end %>
-
-  
+        </p>
+        <p>
+          <strong>العلاج:</strong>
+          <ul>
+            <% @visit.visit_medicaments.each do |a| %>
+              <li>
+                <%= a&.medicament&.name %>
+              </li>
+            <% end %>
+          </ul>
+        </p>
+      <% end %>
+    </div>
   </div>
-  <div class="box-footer">
-    <%= link_to 'تعديل', edit_visit_path(@visit), class: 'btn btn-success pull-left' %>
-    <%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
+
+  <!-- this row will not appear when printing -->
+  <div class="no-print">
+    <div class="box-footer">
+      <a href="#" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+      <%= link_to 'تعديل', edit_visit_path(@visit), class: 'btn btn-success pull-left' %>
+      <%= link_to 'عودة', visits_path, class: 'btn btn-success pull-left' %>
+    </div>
   </div>
 </div>
