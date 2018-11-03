@@ -1,5 +1,4 @@
 <% patients_select = get_patients_select %>
-  <% medicaments_select = get_medicaments_select %>
     <% diagnoses_select = get_diagnoses_select %>
       <%= form_for(@visit, local: true) do |form| %>
       <% if @visit.errors.any? %>
