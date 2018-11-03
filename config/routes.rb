@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   end
   resources :visits
   resources :patients
-  resources :medicaments
   resources :diagnoses
   resources :regions
   resources :visit_types

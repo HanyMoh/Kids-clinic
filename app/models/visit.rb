@@ -31,10 +31,8 @@ class Visit < ApplicationRecord
   belongs_to :visit_type
   belongs_to :user
   has_many :visit_diagnoses, dependent: :destroy
-  has_many :visit_medicaments, dependent: :destroy
 
   accepts_nested_attributes_for :visit_diagnoses
-  accepts_nested_attributes_for :visit_medicaments
 
   ransacker :created_at, type: :date do
     Arel.sql('date(created_at)')

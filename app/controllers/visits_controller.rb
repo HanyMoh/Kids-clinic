@@ -29,7 +29,6 @@ class VisitsController < ApplicationController
     @visit.code = Visit.max_code
     @visit.turn_num = Visit.current_turn Date.current
     @visit.visit_date = Date.current
-    @visit.visit_medicaments.build
     @visit.visit_diagnoses.build
   end
 
@@ -85,7 +84,6 @@ class VisitsController < ApplicationController
     def visit_params
       params.require(:visit).permit(
         :visit_date, :patient_id, :visit_type_id, :note, :user_id, :code, :turn_num,
-        visit_medicaments_attributes: [:id, :medicament_id, :_destroy],
         visit_diagnoses_attributes: [:id, :diagnosis_id, :_destroy],
       )
     end
