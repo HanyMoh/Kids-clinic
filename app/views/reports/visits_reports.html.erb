@@ -1,10 +1,28 @@
+<div class="col-xs-12 col-sm-12 col-md-3 no-print">
+      <%= form_tag reports_visits_reports_path, :method => 'get' do %>
+      <div class="form-group">
+        <label for="">الفترة من</label>
+        <%= text_field_tag :st_date, params[:st_date],class: 'datepicker form-control text-right' %>
+      </div>
+      <div class="form-group">
+        <label for="">الفترة إلى</label>
+        <%= text_field_tag :en_date, params[:en_date],class: 'datepicker form-control text-right' %>
+      </div>
+      <div class="actions form-group">
+        <%= submit_tag "بحث", :created_at => nil, class: 'btn btn-primary' %>
+      </div>
+
+      <% end %>
+    </div>
+    <div class="clearfix no-print"></div>
 
 <div class="box" dir="rtl">
   <div class="box-header with-border">
     <h3 class="box-title">الزيارات باليوم</h3>
   </div>
   <div class="content-box-large box-with-header">
-    <%= line_chart Visit.group_by_day(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
+
+    <%= line_chart @visits.group_by_day(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
   </div>
 </div>
 <div class="box" dir="rtl">

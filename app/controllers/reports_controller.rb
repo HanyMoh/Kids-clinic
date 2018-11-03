@@ -2,6 +2,10 @@ class ReportsController < ApplicationController
   def index
   end
   def visits_reports
+    params[:st_date] ||= 3.month.ago
+    params[:en_date] ||= Time.current
+
+    @visits = Visit.period(params[:st_date], params[:en_date])
   end
   def kids_by_region
     render json: Patient.includes(:regions).group(:region).count.map { |k, v| [k.name, v] }

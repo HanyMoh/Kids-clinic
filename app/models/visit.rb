@@ -48,4 +48,7 @@ class Visit < ApplicationRecord
   scope :current_visits, lambda {|visit_date|
     Visit.where(visit_date: visit_date).order(created_at: :desc)
   }
+  scope :period, lambda {|st_date, en_date|
+    Visit.where('visit_date BETWEEN :st_date AND :en_date', st_date: st_date, en_date: en_date)
+  }
 end
