@@ -2,10 +2,10 @@ class ReportsController < ApplicationController
   def index
   end
   def visits_reports
-    params[:st_date] ||= 3.month.ago
+    params[:st_date] ||= 1.month.ago
     params[:en_date] ||= Time.current
-
-    @visits = Visit.period(params[:st_date], params[:en_date])
+    @visits           = Visit.period(params[:st_date], params[:en_date])
+    @visits_by_type   = visits_by_visit_type
   end
   def kids_by_region
     render json: Patient.includes(:regions).group(:region).count.map { |k, v| [k.name, v] }
@@ -24,9 +24,11 @@ class ReportsController < ApplicationController
     }
   end
   def visits_by_visit_type
-    render json: Visit.group(:visit_type).count.map{ |k, v|
-      [[k.name], v]
-    }
+      params[:st_date] ||= 1.month.ago
+      params[:en_date] ||= Time.current
+       Visit.period(params[:st_date], params[:en_date]).group(:visit_type).count.map{ |k, v|
+        [[k.name], v]
+      }
   end
 
 end

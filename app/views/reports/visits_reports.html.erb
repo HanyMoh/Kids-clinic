@@ -1,27 +1,40 @@
-<div class="col-xs-12 col-sm-12 col-md-3 no-print">
-      <%= form_tag reports_visits_reports_path, :method => 'get' do %>
-      <div class="form-group">
-        <label for="">الفترة من</label>
-        <%= text_field_tag :st_date, params[:st_date],class: 'datepicker form-control text-right' %>
-      </div>
-      <div class="form-group">
-        <label for="">الفترة إلى</label>
-        <%= text_field_tag :en_date, params[:en_date],class: 'datepicker form-control text-right' %>
-      </div>
-      <div class="actions form-group">
-        <%= submit_tag "بحث", :created_at => nil, class: 'btn btn-primary' %>
-      </div>
+<div class="box box-warning">
+  <div class="box-header with-border">
 
+  </div>
+  <div class="box-body" dir="rtl">
+    <div class="col-xs-12 text-right">
+      <%= form_tag reports_visits_reports_path, :method => 'get' do %>
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="actions form-group visits-search-submit">
+            <%= submit_tag "بحث", :created_at => nil, class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="form-group">
+            <label for="">الفترة إلى</label>
+            <%= text_field_tag :en_date, params[:en_date], autocomplete: :off, class: 'datepicker form-control text-right' %>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="form-group">
+            <label for="">الفترة من</label>
+            <%= text_field_tag :st_date, params[:st_date], autocomplete: :off, class: 'datepicker form-control text-right' %>
+          </div>
+        </div>
+      </div>
       <% end %>
     </div>
     <div class="clearfix no-print"></div>
+  </div>
+</div>
 
 <div class="box" dir="rtl">
   <div class="box-header with-border">
     <h3 class="box-title">الزيارات باليوم</h3>
   </div>
   <div class="content-box-large box-with-header">
-
     <%= line_chart @visits.group_by_day(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
   </div>
 </div>
@@ -30,7 +43,7 @@
     <h3 class="box-title">الزيارات بالأيام</h3>
   </div>
   <div class="content-box-large box-with-header">
-    <%= column_chart Visit.group_by_day_of_week(:visit_date, format: "%A").count, discrete: true %>
+    <%= column_chart @visits.group_by_day_of_week(:visit_date, format: "%A").count, discrete: true %>
   </div>
 </div>
 <div class="box" dir="rtl">
@@ -38,7 +51,7 @@
     <h3 class="box-title">الزيارات بالإسبوع</h3>
   </div>
   <div class="content-box-large box-with-header">
-    <%= column_chart Visit.group_by_week(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
+    <%= column_chart @visits.group_by_week(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
   </div>
 </div>
 <div class="box" dir="rtl">
@@ -46,7 +59,7 @@
     <h3 class="box-title">الزيارات بالشهر</h3>
   </div>
   <div class="content-box-large box-with-header">
-    <%= column_chart Visit.group_by_month(:visit_date, format: "%B").count, discrete: true %>
+    <%= column_chart @visits.group_by_month(:visit_date, format: "%B").count, discrete: true %>
   </div>
 </div>
 <div class="box" dir="rtl">
@@ -54,7 +67,7 @@
     <h3 class="box-title">الزيارات بالسنة</h3>
   </div>
   <div class="content-box-large box-with-header">
-    <%= column_chart Visit.group_by_year(:visit_date, format: "%Y").count, discrete: true %>
+    <%= column_chart @visits.group_by_year(:visit_date, format: "%Y").count, discrete: true %>
   </div>
 </div>
 
@@ -64,6 +77,7 @@
 
   </div>
   <div class="content-box-large box-with-header">
-    <%= column_chart reports_visits_by_visit_type_path %>
+ <%= column_chart @visits_by_type %>
+
   </div>
 </div>
