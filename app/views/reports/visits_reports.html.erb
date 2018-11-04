@@ -14,13 +14,13 @@
         <div class="col-sm-5">
           <div class="form-group">
             <label for="">الفترة إلى</label>
-            <%= text_field_tag :en_date, params[:en_date],class: 'datepicker form-control text-right' %>
+            <%= text_field_tag :en_date, params[:en_date], autocomplete: :off, class: 'datepicker form-control text-right' %>
           </div>
         </div>
         <div class="col-sm-5">
           <div class="form-group">
             <label for="">الفترة من</label>
-            <%= text_field_tag :st_date, params[:st_date],class: 'datepicker form-control text-right' %>
+            <%= text_field_tag :st_date, params[:st_date], autocomplete: :off, class: 'datepicker form-control text-right' %>
           </div>
         </div>
       </div>
