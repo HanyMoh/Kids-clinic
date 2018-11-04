@@ -30,15 +30,11 @@
   </div>
 </div>
 
-
-
-
 <div class="box" dir="rtl">
   <div class="box-header with-border">
     <h3 class="box-title">الزيارات باليوم</h3>
   </div>
   <div class="content-box-large box-with-header">
-
     <%= line_chart @visits.group_by_day(:visit_date, format: "%Y-%m-%d").count, discrete: true %>
   </div>
 </div>
@@ -81,7 +77,7 @@
 
   </div>
   <div class="content-box-large box-with-header">
- <%= column_chart reports_visits_by_visit_type_path %>
+ <%= column_chart @visits_by_type %>
 
   </div>
 </div>
