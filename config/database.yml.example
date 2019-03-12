@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: database_dev
+  username: username
+  password: password
+
+production:
+  <<: *default
+  database: database_prod
+  username: username
+  password: <%= ENV['BNAYAT_DATABASE_PASSWORD'] %>

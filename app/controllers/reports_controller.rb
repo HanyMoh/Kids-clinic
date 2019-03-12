@@ -8,7 +8,13 @@ class ReportsController < ApplicationController
     @visits_by_type   = visits_by_visit_type
   end
   def kids_by_region
-    render json: Patient.includes(:regions).group(:region).count.map { |k, v| [k.name, v] }
+    render json: Patient.includes(:regions).group(:region).count.map { |k, v|
+      if k.nil?
+        ['مجهولة', v] 
+      else
+        [k.name, v]
+      end
+    }
   end
   def kids_by_birthdate
     render json: Patient.group_by_year(:birthdate, format: "%Y").count
