@@ -1,30 +1,72 @@
 <div class="box" dir="rtl">
   <div class="box-header with-border">
-    <div class="box-title">عرض الأطفال حسب المنطقة</div>
+    <div class="box-title">نسبة الذكور للإناث</div>
+  </div>
+  <div class="content-box-large box-with-header">
+    <%= pie_chart reports_gender_percentage_path %>
+  </div>
+</div>
 
+<div class="box" dir="rtl">
+  <div class="box-header with-border">
+    <div class="box-title">عرض إجمالى الأطفال حسب المنطقة</div>
   </div>
   <div class="content-box-large box-with-header">
     <%= column_chart reports_kids_by_region_path %>
   </div>
 </div>
 
+<div class="col-xs-6">
+  <div class="box" dir="rtl">
+    <div class="box-header with-border">
+      <div class="box-title">عرض إجمالى الذكور حسب المنطقة</div>
+    </div>
+    <div class="content-box-large box-with-header">
+      <%= column_chart reports_males_by_region_path %>
+    </div>
+  </div>
+</div>
+
+<div class="col-xs-6">
+  <div class="box" dir="rtl">
+    <div class="box-header with-border">
+      <div class="box-title">عرض إجمالى الإناث حسب المنطقة</div>
+    </div>
+    <div class="content-box-large box-with-header">
+      <%= column_chart reports_females_by_region_path %>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+
 <div class="box" dir="rtl">
   <div class="box-header with-border">
     <div class="box-title">عرض الأطفال حسب العمر</div>
-
   </div>
   <div class="content-box-large box-with-header">
     <%= column_chart reports_kids_by_birthdate_path %>
-
   </div>
 </div>
 
-<div class="box" dir="rtl">
-  <div class="box-header with-border">
-    <div class="box-title">نسبة الذكور للإناث</div>
-
-  </div>
-  <div class="content-box-large box-with-header">
-    <%= pie_chart reports_gender_percentage_path %>
+<div class="col-xs-6">
+  <div class="box" dir="rtl">
+    <div class="box-header with-border">
+      <div class="box-title">عرض الذكور حسب العمر</div>
+    </div>
+    <div class="content-box-large box-with-header">
+      <%= column_chart reports_males_by_birthdate_path %>
+    </div>
   </div>
 </div>
+
+<div class="col-xs-6">
+  <div class="box" dir="rtl">
+    <div class="box-header with-border">
+      <div class="box-title">عرض الإناث حسب العمر</div>
+    </div>
+    <div class="content-box-large box-with-header">
+      <%= column_chart reports_females_by_birthdate_path %>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
