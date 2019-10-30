@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a completed project for kids clinics, the main purpose is to get statistics of visits and kids
 
-Things you may want to cover:
+Things you may want to see:
 
-* Ruby version
+![Imgur](https://i.imgur.com/G2INXyn.png)
 
-* System dependencies
+![Imgur](https://i.imgur.com/bP4lU3f.png)
 
-* Configuration
+![Imgur](https://i.imgur.com/SsH8bQv.png)
 
-* Database creation
+![Imgur](https://i.imgur.com/NymOGks.png)
 
-* Database initialization
+![Imgur](https://i.imgur.com/gtMsTY2.png)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
