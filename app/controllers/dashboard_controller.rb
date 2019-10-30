@@ -16,6 +16,7 @@ class DashboardController < ApplicationController
       else
         @current_visits = Visit.current_visits Date.current
         @patients = Patient.where(created_at: Time.current.beginning_of_day..Time.current.end_of_day)
+        @current_birthday = Patient.current_birthday
       end
     else
       redirect_to dashboard_new_url

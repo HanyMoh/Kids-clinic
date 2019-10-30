@@ -34,4 +34,14 @@ class Patient < ApplicationRecord
   validates :name, presence: true, length: { within: 2..40 }, uniqueness: true
 
   scope :max_code, lambda { maximum(:code).to_i + 1 }
+
+  scope :current_birthday, lambda { 
+    
+    today = Time.current
+      day = today.day
+    month = today.month
+
+    where("extract(month from birthdate) = ? AND extract(day from birthdate) = ?", month, day)
+
+   }
 end
